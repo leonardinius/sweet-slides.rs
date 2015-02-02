@@ -22,7 +22,11 @@
         position: absolute;
         bottom: 3em;
       }
-      li p { line-height: 1.25em; }
+      li p { 
+        line-height: 1.25em; 
+        padding-top: 0.55em;
+        padding-bottom: 0.55em;
+      }
       .red { color: #fa0000; }
       .large { font-size: 2em; }
       a, a > code {
@@ -92,7 +96,7 @@
         top: -4em;
         position: relative;
       }
-      
+
       /* Two-column layout */
       .left-column {
         color: #777;
@@ -109,6 +113,14 @@
         padding-top: 1em;
       }
 
+      blockquote {
+        border-left: 0.4em solid #d7d7d7;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 1em !important;
+        padding-right: 1em !important;
+      }
+
   </style>
     </head>
     <body>
@@ -118,13 +130,15 @@
 class: middle
 
 .home-left-column[
-  # Sweet Rust
+# Introduction to Rust
 
-  * **S**afe
-  * **W**anted
-  * **E**fficient
-  * **E**legant
-  * **T**yped
+- **S**afe
+- **W**anted
+- **E**fficient
+- **E**legant
+- **T**yped
+
+## Sweet & Beautiful Programming Language
 ]
 
 .home-right-column[
@@ -139,35 +153,88 @@ class: middle
 ---
 class: center, middle
 
-# Let's talk about the language
+# About the language
 
 ---
 class: center, middle, inverse
 
-# But first!!!!!!111
+# But first!
 
 ---
 class: center, middle, inverse
 
-# How do we see each other and why?
+# How do we see each other and Why?
 
-[![How programming fan boys see each other](files/language-fansboys.jpg)]
+![How programming fan boys see each other](files/language-fansboys.jpg)
 
 ---
-class:
+class: center, middle, inverse
 
+# Let's talk about language instead
+---
 .left-column[
- ## History
+  ## What is it?
 ]
 
 .right-column[
- text text
+- Rust is programming language, obviously. Daah.
+
+- It's good choice when you would chose C/C++.
+> Rust is a systems language pursuing the trifecta: safe, concurrent, and fast.
+
+- It's pragmatically innovative and modern.
+
+- Rust is moving fast towards `1.0` release.
 ]
 
 ???
 
 ---
+.left-column[
+  ## What is it?
+  ## Roots
+]
 
+.right-column[
+- Project was started by Graydon Hoare (Mozilla employee).
+
+- Mozilla began sponsoring project in 2009. Announced in 2010.
+
+- Self-hosted in 2011.
+
+- First public release in January 2012.
+
+---
+
+Mozilla has a lot of C/C++ and feels that pain. 
+E.g. famous Firefox memory issues in the past.
+]
+
+???
+
+---
+.left-column[
+  ## What is it?
+  ## Roots
+  ## Stability
+]
+
+.right-column[
+
+- ![checked](files/checked.png) Rust 1.0.0-alpha - Friday, Jan 9, 2015.
+
+- ![unchecked](files/unchecked.png) Rust 1.0.0-beta1 - Week of Feb 16, 2015.
+
+- ![unchecked](files/unchecked.png) Rust 1.0.0 - One or more six-week cycles later.
+
+---
+  Starting with 1.0 will move to 6-week release cycle and a menu of release "channels".
+  E.g. _Stable_ and _Nightly builds_.
+]
+
+???
+
+---
 What for:
 - c/c++ replacement
 - why c?
@@ -272,9 +339,9 @@ Trait inheritance
 Traits ..(logicall hoop? ..)
 C++ Dimanond problem?
 trait impl for ...
-* type
-* generics
-* constraints
+- type
+- generics
+- constraints
 
 ---
 Generics:
@@ -300,8 +367,8 @@ Safety, no dangling pointers, no nulls,
     RAII
     http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization
     Quote (applicable?) to lifetime and resource management
-    “I brought you into this world,” my father would say, “and I can take you out. It don’t make no difference to me. I’ll just make another one like you.”
-    — Bill Cosby, Fatherhood
+    "I brought you into this world," my father would say, "and I can take you out. It don't make no difference to me. I'll just make another one like you."
+    - Bill Cosby, Fatherhood
 
 ---
     ## >> ##
@@ -373,4 +440,3 @@ http://media.giphy.com/media/A6H1A9rhetsXK/giphy.gif
     </script>
   </body>
 </html>
-
