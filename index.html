@@ -22,8 +22,8 @@
         position: absolute;
         bottom: 3em;
       }
-      li p { 
-        line-height: 1.25em; 
+      li p {
+        line-height: 1.25em;
         padding-top: 0.55em;
         padding-bottom: 0.55em;
       }
@@ -127,6 +127,7 @@
         <textarea
            id="source">
 
+name: Title Page
 class: middle
 
 .home-left-column[
@@ -150,22 +151,25 @@ class: middle
   Slides:
   http://leonardinius.github.io/intro-ppt.rs
 ]
+
 ---
+name: wht-yet-another-it's
 class: middle
 
 .pull-right[![Meme beautiful](files/happy-face-its-beautiful.jpg)]
 
-.left-column[#Why Yet Another Language?]
+.left-column[# Why Yet Another Language?]
+
 ---
 class: middle
 
 .pull-right[![Realistic expectactions](files/xkcd-realistic-criteria.png)<br/>http://xkcd.com/1232/]
 
-.left-column[#Seriously, Why Yet Another Language?]
+.left-column[# Seriously, Why Yet Another Language?]
 ---
 class: center, middle
 
-# Let's talk about the language
+# Let's talk about the Rust
 
 ---
 class: center, middle, inverse
@@ -175,10 +179,22 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 
-# How do we see each other and Why?
+# It's the way we see each other
 
 ![How programming fan boys see each other](files/language-fansboys.jpg)
 http://www.csee.umbc.edu/courses/331/fall10/images/languageFans.jpg
+
+---
+class: middle, inverse
+
+.right-column[
+# So, question is
+## - **W**hat is Rust?
+## - **W**here does it stand?
+## - **W**here does it go?
+## - **W**hat is it's place in the bigger world?
+]
+
 ---
 .left-column[
   ## What is it?
@@ -200,7 +216,7 @@ http://www.csee.umbc.edu/courses/331/fall10/images/languageFans.jpg
 ---
 .left-column[
   ## What is it?
-  ## Roots
+  ## Roots?
 ]
 
 .right-column[
@@ -214,7 +230,7 @@ http://www.csee.umbc.edu/courses/331/fall10/images/languageFans.jpg
 
 ---
 
-Mozilla has a lot of C/C++ and feels that pain. 
+Mozilla has a lot of C/C++ and feels that pain.
 E.g. famous Firefox memory issues in the past.
 ]
 
@@ -223,8 +239,8 @@ E.g. famous Firefox memory issues in the past.
 ---
 .left-column[
   ## What is it?
-  ## Roots
-  ## Stability
+  ## Roots?
+  ## Stability?
 ]
 
 .right-column[
@@ -243,6 +259,39 @@ E.g. famous Firefox memory issues in the past.
 ???
 
 ---
+.left-column[
+  ## What is it?
+  ## Roots?
+  ## Stability?
+  ## Perpective?
+]
+
+.right-column[
+**Mainstream (_historically_):**
+
+- Unix, time-shared OS<br/>
+  _ASM, C_
+
+- Desktop as commodity, applications<br/>
+  _C/C++, Java_
+
+- Web <br/>
+  _PHP, Python, Java, .Net_
+
+- Smartphone<br/>
+  _Java, Object-C, Swift_
+
+.block[
+  .pull-right[![It's the question](files/question.jpg)]
+  - **Mobile (battery), IoT, etc** <br/>
+    **_C/C++, Go, Rust..?_**
+]
+
+]
+
+???
+
+---
 What for:
 - c/c++ replacement
 - why c?
@@ -251,67 +300,52 @@ What for:
 - OOP is dead
 
 ---
-Lang-Drivers:
+Lang-Drivers
 - Innovation
 - Expressive
 - Embedded-able, low-level, safe/secure, predictable
 
 ---
-Historically (mainstream):
-- Unix, time-shared OS: ASM, C
-- Desktop as commodity, application etc: C/C++,Java
-- Web: PHP, Python, Java, .Net
-- Smartphone: Java, Object-C, Swift
-- Mobile (battery), IoT, etc: Go, Rust (?)
-
----
-Rust progress as language
-http://en.wikipedia.org/wiki/Rust_%28programming_language%29#History
-Ability to take a distant view and step backwards
-
----
-LLVM
-Grammar
-..?
-
----
 http://crossthebreeze.files.wordpress.com/2007/08/feature.jpg
-Features from the lang site:
-Featuring
-    zero-cost abstractions
-    move semantics
-    guaranteed memory safety
-    threads without data races
-    trait-based generics
-    pattern matching
-    type inference
-    minimal runtime
-    efficient C bindings
 
---- Concepts
-Literals, Variables, Grammar
-builtin types
-  Primitives
-  Tuples
-  Strings
-  Arrays & Slices & Vectors
-    ["hip","hip"]
-    (hip hip array!)
-  Iterators / Collections (goes here?)
-    Design of next() -> Some/None (Option)
-  Structures
-  Enums / * namespaces * C-like * Pattern matching * Error handling (e.g. Result<T,E> enum) ...
-Types (decl, cast, inference)
-Aliases http://rustbyexample.com/type/alias.html
-Expressions
-Flow control:
- if/else
- loops (loop, while, goto, break/continue)
- for (ranges)
-Functions
-Attributes
-Modules
-Crates
+Features from the lang site:
+
+Featuring
+- zero-cost abstractions
+- move semantics
+- guaranteed memory safety
+- threads without data races
+- trait-based generics
+- pattern matching
+- type inference
+- minimal runtime
+- efficient C bindings
+
+---
+- Concepts
+- Literals, Variables, Grammar
+- builtin types
+  - Primitives
+  - Tuples
+  - Strings
+  - Arrays & Slices & Vectors
+    - ["hip","hip"]
+    - (hip hip array!)
+  - Iterators / Collections (goes here?)
+    - Design of next() -> Some/None (Option)
+  - Structures
+  -  Enums / * namespaces * C-like * Pattern matching * Error handling (e.g. Result<T,E> enum) ...
+- Types (decl, cast, inference)
+- Aliases http://rustbyexample.com/type/alias.html
+- Expressions
+- Flow control:
+  - if/else
+  - loops (loop, while, goto, break/continue)
+  - for (ranges)
+- Functions
+- Attributes
+- Modules
+- Crates
 
 ---
 https://github.com/rust-lang/rust/wiki/The-Rusticon#syntaxicon
@@ -328,40 +362,41 @@ fn F(mut x: &mut T) { }
 ```
 
 ---
-Encapsulation, Inheritance, Polymorphism
-Intro:
- "
- Q: "Whats the object-oriented way to become wealthy?"
- A: Inheritance
- "
-OOP?
-Gang of forth https://joshldavis.com/2013/06/16/the-rise-of-the-gang-of-four-with-rust/
-Classless OOP https://lwn.net/Articles/548560/
+
+- Encapsulation, Inheritance, Polymorphism
+  Intro:
+  "
+   Q: "Whats the object-oriented way to become wealthy?"
+   A: Inheritance
+  "
+- OOP?
+- Gang of forth https://joshldavis.com/2013/06/16/the-rise-of-the-gang-of-four-with-rust/
+- Classless OOP https://lwn.net/Articles/548560/
   "
   The many faces of inheritance
   While inheritance is a core concept in object-oriented programming, it is not necessarily a well-defined concept. It always involves one thing getting some features by association with some previously defined things, but beyond that languages differ. The thing is typically a "class", but sometimes an "interface" or even (in prototype inheritance) an "object" that borrows some behavior and state from some other "prototypical" object.
   "
-http://en.wikipedia.org/wiki/Type_class and http://en.wikipedia.org/wiki/Ad_hoc_polymorphism
-Type system
-Trait inheritance
-Traits ..(logicall hoop? ..)
-C++ Dimanond problem?
-trait impl for ...
-- type
-- generics
-- constraints
+- http://en.wikipedia.org/wiki/Type_class and http://en.wikipedia.org/wiki/Ad_hoc_polymorphism
+- Type system
+- Trait inheritance
+- Traits ..(logicall hoop? ..)
+- C++ Dimanond problem?
+- trait impl for ...
+ - type
+ - generics
+ - constraints
 
 ---
-Generics:
-Type Bounds
-Where clauses
+- Generics
+- Type Bounds
+- Where clauses
 
 ---
-Pattern matching is the one thing to expect from new/modern programming language
+- Pattern matching is the one thing to expect from new/modern programming language
 
 ---
-Ownership and moves / borowwing (lending), lifetimes
-Safety, no dangling pointers, no nulls,
+- Ownership and moves / borowwing (lending), lifetimes
+- Safety, no dangling pointers, no nulls,
 
 ---
     ## >> ##
@@ -415,18 +450,17 @@ e.g. chack todo/ warn/xxx in the comments
     C / FFI
 
 ---
-
 Cargo
 - std tool chain
 - tests and profiler benchmarks (micro benchmarks)
 - rust doc && rust doc tests
 
-
 ---
 Safety, Quality, Quantity. In that order.
 http://fsharpforfunandprofit.com/assets/img/safety_first.jpg
 
---- Haters gonna hate
+--- 
+Haters gonna hate
 http://media.giphy.com/media/A6H1A9rhetsXK/giphy.gif
 
 # Project Ideas #
