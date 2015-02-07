@@ -15,17 +15,20 @@
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
 
-      .remark-slide-content.title-page h1 { font-size: 7em; }
+      h1, h2, h3 { font-weight: 500; color: #40013E; }
       .remark-slide-content h1 { font-size: 5em; }
       .remark-slide-content h2 { font-size: 3em; }
       .remark-slide-content h3 { font-size: 2.6em; }
-      
+
       .footnote {
         position: absolute;
-        bottom: 1em;
+        text-align: left;
+        bottom: 0.8em;
+        left: 1em;
       }
-      a.reference-url {
-        font-size: 6em;
+      .reference-url a {
+        font-size: 0.6em;
+        color: gray;
       }
       li p {
         line-height: 1.25em;
@@ -75,7 +78,7 @@
       }
       .inverse h1, .inverse h2 {
         color: #f3f3f3;
-        line-height: 0.8em;
+        line-height: 0.4em;
       }
 
       /* Slide-specific styling */
@@ -91,16 +94,14 @@
         height: 92%;
         float: left;
       }
-      .home-left-column h2:last-of-type, .left-column h3:last-child {
-          color: #000;
-       }
       .home-right-column {
-        width: 65%;
+        width: 55%;
         float: right;
         /* padding-top: 1em; */
         top: -1.75em;
         position: relative;
       }
+      .remark-slide-content.title-page h1 { font-size: 8em; }
 
       /* Two-column layout */
       .left-column {
@@ -108,6 +109,10 @@
         width: 20%;
         height: 92%;
         float: left;
+      }
+      .left-column h2, .left-column h3 {
+        /*color: #586e75;*/
+        color: rgb(119, 119, 119);
       }
       .left-column h2:last-of-type, .left-column h3:last-child {
           color: #000;
@@ -152,77 +157,23 @@ class: middle, title-page
 class: middle
 
 .pull-left[![Wearing many hats](files/ManyHats.jpg)]
-### System administrator assistant, Developer, Team leader,..
+### System administrator assistant, Developer, Team leader, Architect,..
 
 ----
 
 .pull-right[![Galeo logo](files/galeo_logo_RGB.png)]
 
-.footnote[.reference-url[*http://profitablegrowth.com/wp-content/uploads/2010/01/ManyHats.jpg]]
----
-class: middle
-
-.pull-right[![Meme beautiful](files/happy-face-its-beautiful.jpg)]
-
-.left-column[# Why yet another programming language?]
-
-???
-
-- People like _BEAUTIFUL_ things.
-
-- Sometimes _DIFFERENT_ Or _NEW_ is interchangeable with _BEAUTIFUL_.
-
-- We as programmers use programming languages as our primary tools. Everyone
-likes new and shiny and beautiful tools.
-
-- We also believe [that] new and shiny tools produce better results and help to build
-better temples.
-
----
-class: middle
-
-.pull-right[![Realistic expectactions](files/xkcd-realistic-criteria.png)<br/>.reference-url[*http://xkcd.com/1232/]]
-
-.left-column[# Seriously. Why yet another programming language?]
-
-???
-
-- The XKCD comic actually is called 'Realistic Criteria'. 
-
- - It's simultaneously portrays why _NEW PROGRAMMING LANGUAGES_ are worth 
-   pursuing and exploring...
-
- - And UN-realistic expectations (/distortion field) towards new/upcoming/hyped
-   programming languages.
-
-- Yes, plenty of programming languages exist. Yes, most of them are not ideal to 
-  some degree or the other.
-
-- We could try to solve all problems with either one of them or "fix" them all
-  at once.
-
-- Would it satisfy our needs for something different, shiny and efficient? Most
-likely it would.
-
-- Is it realistic plan? NO.
-
----
-class: center, middle
-
-# Let's talk about the Rust
+.footnote[*.reference-url[http://profitablegrowth.com/wp-content/uploads/2010/01/ManyHats.jpg]]
 
 ---
 class: center, middle, inverse
+background-image:url(./files/language-fansboys.jpg
 
-# But first!
-
----
-class: center, middle, inverse
-
-# It's the way we see each other
+# "We" vs "Them"
 
 ![How programming fan boys see each other](files/language-fansboys.jpg)
-.reference-url[*http://www.csee.umbc.edu/courses/331/fall10/images/languageFans.jpg]
+
+.footnote[*.reference-url[http://www.csee.umbc.edu/courses/331/fall10/images/languageFans.jpg]]
 
 ???
 
@@ -262,51 +213,6 @@ class: middle, inverse
 - It's pragmatically innovative and modern.
 
 - Rust is moving fast towards `1.0` release.
-]
-
-???
-
----
-.left-column[
-  ## What is it?
-  ## Roots?
-]
-
-.right-column[
-- Project was started by Graydon Hoare (Mozilla employee).
-
-- Mozilla began sponsoring project in 2009. Announced in 2010.
-
-- Self-hosted in 2011.
-
-- First public release in January 2012.
-
----
-
-Mozilla has a lot of C/C++ and feels that pain.
-E.g. famous Firefox memory issues in the past.
-]
-
-???
-
----
-.left-column[
-  ## What is it?
-  ## Roots?
-  ## Stability?
-]
-
-.right-column[
-
-- ![checked](files/checked.png) Rust 1.0.0-alpha - Friday, Jan 9, 2015.
-
-- ![unchecked](files/unchecked.png) Rust 1.0.0-beta1 - Week of Feb 16, 2015.
-
-- ![unchecked](files/unchecked.png) Rust 1.0.0 - One or more six-week cycles later.
-
----
-  Starting with 1.0 will move to 6-week release cycle and a menu of release "channels".
-  E.g. _Stable_ and _Nightly builds_.
 ]
 
 ???
@@ -553,11 +459,11 @@ http://media.giphy.com/media/A6H1A9rhetsXK/giphy.gif
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
     <script>
-    var slideshow = remark.create({
-      highlightLanguage : 'rust',
-      highlightStyle : 'arta'
-    });
-    slideshow.togglePresenterMode();
+      var slideshow = remark.create({
+        highlightLanguage : 'rust',
+        highlightStyle : 'arta'
+      });
+      //slideshow.togglePresenterMode();
     </script>
   </body>
 </html>
