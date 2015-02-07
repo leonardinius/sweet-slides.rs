@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to Rust - SWEET programming language</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      .reference-url {
+        text-size: 0.3em;
+      }
+      li p {
+        line-height: 1.25em;
+        padding-top: 0.55em;
+        padding-bottom: 0.55em;
+      }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      pre {
+        border-left: 0.4em solid #d7d7d7;
+        padding: 1em !important;
+      }
+      code {
+        -moz-border-radius: 5px;
+        -web-border-radius: 5px;
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code,.remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+
+      /* Title page Two-column layout */
+      .home-left-column {
+        color: #777;
+        width: 35%;
+        height: 92%;
+        float: left;
+      }
+      .home-left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+       }
+      .home-right-column {
+        width: 65%;
+        float: right;
+        /* padding-top: 1em; */
+        top: -1.75em;
+        position: relative;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+      .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+       }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+
+      blockquote {
+        border-left: 0.4em solid #d7d7d7;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 1em !important;
+        padding-right: 1em !important;
+      }
+
+  </style>
+    </head>
+    <body>
+        <textarea
+           id="source">
+
+name: Title Page
+class: middle
+
+.home-left-column[
+# Introduction to Rust
+
+- **S**afe
+- **W**anted
+- **E**fficient
+- **E**legant
+- **T**yped
+
+## Sweet & Beautiful Programming Language
+]
+
+.home-right-column[
+  .right[![The Rust](files/Rust_logo.png)]
+]
+
+.footnote[
+  By Leonids Maslovs (@leonardinius) <br/>
+  http://leonardinius.github.io/intro-ppt.rs
+]
+
+---
+class: middle
+
+.pull-left[![Wearing many hats](files/ManyHats.jpg)]
+# In IT for ~10 yrs
+## System administrator assistant, Developer, Team leader,..
+
+----
+
+.pull-right[![Galeo logo](files/galeo_logo_RGB.png)]
+## Live and work in Riga and spend my days making kick ass things at @galeoconsulting
+
+.footnote[.reference-url[*http://profitablegrowth.com/wp-content/uploads/2010/01/ManyHats.jpg]]
+---
+class: middle
+
+.pull-right[![Meme beautiful](files/happy-face-its-beautiful.jpg)]
+
+.left-column[# Why yet another programming language?]
+
+???
+
+- People like _BEAUTIFUL_ things.
+
+- Sometimes _DIFFERENT_ Or _NEW_ is interchangeable with _BEAUTIFUL_.
+
+- We as programmers use programming languages as our primary tools. Everyone
+likes new and shiny and beautiful tools.
+
+- We also believe [that] new and shiny tools produce better results and help to build
+better temples.
+
+---
+class: middle
+
+.pull-right[![Realistic expectactions](files/xkcd-realistic-criteria.png)<br/>.reference-url[*http://xkcd.com/1232/]]
+
+.left-column[# Seriously. Why yet another programming language?]
+
+???
+
+- The XKCD comic actually is called 'Realistic Criteria'. 
+
+ - It's simultaneously portrays why _NEW PROGRAMMING LANGUAGES_ are worth 
+   pursuing and exploring...
+
+ - And UN-realistic expectations (/distortion field) towards new/upcoming/hyped
+   programming languages.
+
+- Yes, plenty of programming languages exist. Yes, most of them are not ideal to 
+  some degree or the other.
+
+- We could try to solve all problems with either one of them or "fix" them all
+  at once.
+
+- Would it satisfy our needs for something different, shiny and efficient? Most
+likely it would.
+
+- Is it realistic plan? NO.
+
+---
+class: center, middle
+
+# Let's talk about the Rust
+
+---
+class: center, middle, inverse
+
+# But first!
+
+---
+class: center, middle, inverse
+
+# It's the way we see each other
+
+![How programming fan boys see each other](files/language-fansboys.jpg)
+.reference-url[*http://www.csee.umbc.edu/courses/331/fall10/images/languageFans.jpg]
+
+???
+
+- It's human nature to create brotherhoods, communities and professional unions.
+
+- Our tools shape our minds and influence our perception. Especially our
+perception of other groups.
+
+- We try to distinguish "us" from "them". We associate certain traits, behaviors
+and looks with neighbour brotherhoods. And, obviously have some idea of
+ourselves: what our strong traits are, what drawbacks are,...
+
+- **And most importantly, what our superhero name would be ;)**
+
+---
+class: middle, inverse
+
+.right-column[
+# So, lets distinguish and define Rustaceans
+## - **W**hat is Rust?
+## - **W**here does it stand?
+## - **W**here does it go?
+## - **W**hat is it's place in the bigger world?
+]
+
+---
+.left-column[
+  ## What is it?
+]
+
+.right-column[
+- Rust is programming language, obviously. Daah.
+
+- It's good choice when you would chose C/C++.
+> Rust is a systems language pursuing the trifecta: safe, concurrent, and fast.
+
+- It's pragmatically innovative and modern.
+
+- Rust is moving fast towards `1.0` release.
+]
+
+???
+
+---
+.left-column[
+  ## What is it?
+  ## Roots?
+]
+
+.right-column[
+- Project was started by Graydon Hoare (Mozilla employee).
+
+- Mozilla began sponsoring project in 2009. Announced in 2010.
+
+- Self-hosted in 2011.
+
+- First public release in January 2012.
+
+---
+
+Mozilla has a lot of C/C++ and feels that pain.
+E.g. famous Firefox memory issues in the past.
+]
+
+???
+
+---
+.left-column[
+  ## What is it?
+  ## Roots?
+  ## Stability?
+]
+
+.right-column[
+
+- ![checked](files/checked.png) Rust 1.0.0-alpha - Friday, Jan 9, 2015.
+
+- ![unchecked](files/unchecked.png) Rust 1.0.0-beta1 - Week of Feb 16, 2015.
+
+- ![unchecked](files/unchecked.png) Rust 1.0.0 - One or more six-week cycles later.
+
+---
+  Starting with 1.0 will move to 6-week release cycle and a menu of release "channels".
+  E.g. _Stable_ and _Nightly builds_.
+]
+
+???
+
+---
+.left-column[
+  ## What is it?
+  ## Roots?
+  ## Stability?
+  ## Perpective?
+]
+
+.right-column[
+**Mainstream (_historically_):**
+
+- Unix, time-shared OS<br/>
+  _ASM, C_
+
+- Desktop as commodity, applications<br/>
+  _C/C++, Java_
+
+- Web <br/>
+  _PHP, Python, Java, .Net_
+
+- Smartphone<br/>
+  _Java, Object-C, Swift_
+
+.block[
+  .pull-right[![It's the question](files/question.jpg)]
+  - **Mobile (battery), IoT, etc** <br/>
+    **_C/C++, Go, Rust..?_**
+]
+
+]
+
+???
+
+---
+What for:
+- c/c++ replacement
+- why c?
+- what to expect from new language? Why users will jump in?
+- what to expect from c replacement?
+- OOP is dead
+
+---
+Lang-Drivers
+- Innovation
+- Expressive
+- Embedded-able, low-level, safe/secure, predictable
+
+---
+http://crossthebreeze.files.wordpress.com/2007/08/feature.jpg
+
+Features from the lang site:
+
+Featuring
+- zero-cost abstractions
+- move semantics
+- guaranteed memory safety
+- threads without data races
+- trait-based generics
+- pattern matching
+- type inference
+- minimal runtime
+- efficient C bindings
+
+---
+
+# Momentum?
+e.g. Nim / Nimroid, D et cetera...
+
+
+---
+- Concepts
+- Literals, Variables, Grammar
+- builtin types
+  - Primitives
+  - Tuples
+  - Strings
+  - Arrays & Slices & Vectors
+    - ["hip","hip"]
+    - (hip hip array!)
+  - Iterators / Collections (goes here?)
+    - Design of next() -> Some/None (Option)
+  - Structures
+  -  Enums / * namespaces * C-like * Pattern matching * Error handling (e.g. Result<T,E> enum) ...
+- Types (decl, cast, inference)
+- Aliases http://rustbyexample.com/type/alias.html
+- Expressions
+- Flow control:
+  - if/else
+  - loops (loop, while, goto, break/continue)
+  - for (ranges)
+- Functions
+- Attributes
+- Modules
+- Crates
+
+---
+https://github.com/rust-lang/rust/wiki/The-Rusticon#syntaxicon
+
+Where to put mut?
+
+```
+fn A(x: T) { }
+fn B(x: &T) { }
+fn C(x: &mut T) { }
+fn D(mut x: T) { }
+fn E(mut x: &T) { }
+fn F(mut x: &mut T) { }
+```
+
+---
+
+- Encapsulation, Inheritance, Polymorphism
+  Intro:
+  "
+   Q: "Whats the object-oriented way to become wealthy?"
+   A: Inheritance
+  "
+- OOP?
+- Gang of forth https://joshldavis.com/2013/06/16/the-rise-of-the-gang-of-four-with-rust/
+- Classless OOP https://lwn.net/Articles/548560/
+  "
+  The many faces of inheritance
+  While inheritance is a core concept in object-oriented programming, it is not necessarily a well-defined concept. It always involves one thing getting some features by association with some previously defined things, but beyond that languages differ. The thing is typically a "class", but sometimes an "interface" or even (in prototype inheritance) an "object" that borrows some behavior and state from some other "prototypical" object.
+  "
+- http://en.wikipedia.org/wiki/Type_class and http://en.wikipedia.org/wiki/Ad_hoc_polymorphism
+- Type system
+- Trait inheritance
+- Traits ..(logicall hoop? ..)
+- C++ Dimanond problem?
+- trait impl for ...
+ - type
+ - generics
+ - constraints
+
+---
+- Generics
+- Type Bounds
+- Where clauses
+
+---
+- Pattern matching is the one thing to expect from new/modern programming language
+
+---
+- Ownership and moves / borowwing (lending), lifetimes
+- Safety, no dangling pointers, no nulls,
+
+---
+    ## >> ##
+    > move semantics
+    > guaranteed memory safety
+     Why it's important - http://en.wikipedia.org/wiki/Tony_Hoare#Apologies_and_retractions
+     Billion worth mistake
+
+---
+    ## >> ##
+    RAII
+    http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization
+    Quote (applicable?) to lifetime and resource management
+    "I brought you into this world," my father would say, "and I can take you out. It don't make no difference to me. I'll just make another one like you."
+    - Bill Cosby, Fatherhood
+
+---
+    ## >> ##
+    Globals / constants / Static lifetime
+
+    ---
+    ## >> ##
+    Pointer cheatsheet
+        http://doc.rust-lang.org/1.0.0-alpha/book/pointers.html#cheat-sheet
+
+        Lifetime elision
+        http://doc.rust-lang.org/1.0.0-alpha/book/ownership.html#lifetime-elision
+        fn get_str() -> &str;                                   // ILLEGAL, no inputs
+        fn frob(s: &str, t: &str) -> &str;                      // ILLEGAL, two inputs
+
+---
+    ## >> ##
+    Samples on borrowing  / lifetime
+---
+    ## >> ##
+    Samples on compiler messages
+---
+    ## >> ##
+    Unsafe
+---
+    ## >> ##
+    Closures, Higher Order Functions (HOF), Threads, Channels
+
+---
+    ## >> ##
+     Macroses, Lng extensibility, plug-ins etc ...
+e.g. chack todo/ warn/xxx in the comments
+
+---
+    ## >> ##
+    C / FFI
+
+---
+Cargo
+- std tool chain
+- tests and profiler benchmarks (micro benchmarks)
+- rust doc && rust doc tests
+
+---
+Safety, Quality, Quantity. In that order.
+http://fsharpforfunandprofit.com/assets/img/safety_first.jpg
+
+---
+Haters gonna hate
+http://media.giphy.com/media/A6H1A9rhetsXK/giphy.gif
+
+# Project Ideas #
+
+- git wiki (git as backend)
+- rust book - playpen integration
+- rust-book - next - prev
+- fmt formatter lint/-er
+- todo checker (gh issues)
+
+---
+
+# How to start - Compile/Run Loop
+## Playpen
+## Cargo new
+
+---
+
+# How to start - IDE
+## URL
+## Vim, Sublime, etc...
+
+---
+
+# How to start - Community
+## Community
+## Resources
+## Discourse/IRC
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+    var slideshow = remark.create({
+      highlightLanguage : 'rust',
+      highlightStyle : 'arta'
+    });
+    slideshow.togglePresenterMode();
+    </script>
+  </body>
+</html>
