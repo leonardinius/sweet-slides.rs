@@ -101,7 +101,7 @@
         top: -1.75em;
         position: relative;
       }
-      .remark-slide-content.title-page h1 { font-size: 8em; }
+      .remark-slide-content.home h1 { font-size: 8em; }
 
       /* Two-column layout */
       .left-column {
@@ -131,6 +131,18 @@
         padding-right: 1em !important;
       }
 
+      .about-pull-left {
+        width: 47%;
+        position: absolute;
+        top: 1em;
+        left: 1em;
+      }
+      .about-pull-right {
+        width: 47%;
+        position: absolute;
+        bottom: 7em;
+        right: 3.5em;
+      }
   </style>
     </head>
     <body>
@@ -138,7 +150,7 @@
            id="source">
 
 name: Title Page
-class: middle, title-page
+class: middle, home
 
 .home-left-column[
 # Sweet Rust
@@ -154,26 +166,21 @@ class: middle, title-page
 ]
 
 ---
-class: middle
+class: about, middle
 
-.pull-left[![Wearing many hats](files/ManyHats.jpg)]
-### System administrator assistant, Developer, Team leader, Architect,..
+.about-pull-left[![Wearing many hats](files/ManyHats.jpg)]
 
 ----
 
-.pull-right[![Galeo logo](files/galeo_logo_RGB.png)]
+.about-pull-right[![Galeo logo](files/galeo_logo_RGB.png)]
 
 .footnote[*.reference-url[http://profitablegrowth.com/wp-content/uploads/2010/01/ManyHats.jpg]]
 
 ---
 class: center, middle, inverse
-background-image:url(./files/language-fansboys.jpg
+background-image:url(./files/evolution-of-programming-languages.jpg)
 
-# "We" vs "Them"
-
-![How programming fan boys see each other](files/language-fansboys.jpg)
-
-.footnote[*.reference-url[http://www.csee.umbc.edu/courses/331/fall10/images/languageFans.jpg]]
+.footnote[*.reference-url[http://xrds.acm.org/images/4833512699_761a3fcc61_b.jpg]]
 
 ???
 
@@ -189,15 +196,9 @@ ourselves: what our strong traits are, what drawbacks are,...
 - **And most importantly, what our superhero name would be ;)**
 
 ---
-class: middle, inverse
+name: popularity-contest
 
-.right-column[
-# So, lets distinguish and define Rustaceans
-## - **W**hat is Rust?
-## - **W**here does it stand?
-## - **W**here does it go?
-## - **W**hat is it's place in the bigger world?
-]
+# Popularity contest
 
 ---
 .left-column[
@@ -324,6 +325,30 @@ fn C(x: &mut T) { }
 fn D(mut x: T) { }
 fn E(mut x: &T) { }
 fn F(mut x: &mut T) { }
+
+// This code is editable and runnable!
+fn main() {
+    // A simple integer calculator:
+    // `+` or `-` means add or subtract by 1
+    // `*` or `/` means multiply or divide by 2
+
+    let program = "+ + * - /";
+    let mut accumulator = 0;
+
+    for token in program.chars() {
+        match token {
+            '+' => accumulator += 1,
+            '-' => accumulator -= 1,
+            '*' => accumulator *= 2,
+            '/' => accumulator /= 2,
+            _ => { /* ignore everything else */ }
+        }
+    }
+
+    println!("The program \"{}\" calculates the value {}",
+              program, accumulator);
+}
+
 ```
 
 ---
@@ -459,11 +484,20 @@ http://media.giphy.com/media/A6H1A9rhetsXK/giphy.gif
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
     <script>
+      //var lngs='arta, ascetic, dark, default, far, github, googlecode, idea, ir_black, magula, monokai, rainbow, solarized_dark, solarized_light, sunburst, tomorrow, tomorrow-night-blue, tomorrow-night-bright, tomorrow-night, tomorrow-night-eighties, vs, zenburn';
+      //var arr = lngs.split(', ');
+      //var k = parseInt(Math.random() * (arr.length + 1));
+      //var slideshow = remark.create({
+      //  highlightLanguage : 'rust',
+      //  highlightStyle : arr[k]
+      //});
+      //console.log(arr[k]);
+      //slideshow.togglePresenterMode();
+
       var slideshow = remark.create({
         highlightLanguage : 'rust',
-        highlightStyle : 'arta'
+        highlightStyle : 'tomorrow' //arr[k]
       });
-      //slideshow.togglePresenterMode();
     </script>
   </body>
 </html>
