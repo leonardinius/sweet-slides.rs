@@ -11,28 +11,19 @@
       body { font-family: 'Droid Serif'; }
       h1, h2, h3 {
         font-family: 'Yanone Kaffeesatz';
-        font-weight: 500;
-        color: #40013E;
+        font-weight: normal;
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
 
-      .remark-slide-content h1 { font-size: 6em; }
-      .remark-slide-content h2 { font-size: 4em; }
-      .remark-slide-content h3 { font-size: 2.6em; }
-
-      .remark-slide-content.big-headers h1 { font-size: 9em; }
-      .remark-slide-content.big-headers h2 { font-size: 5em; }
-      .remark-slide-content.big-headers h3 { font-size: 4.6em; }
-
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
       .footnote {
         position: absolute;
-        text-align: left;
-        bottom: 0.8em;
-        left: 1em;
-        font-size: 0.6em;
+        bottom: 3em;
       }
-      .reference-url a {
-        color: gray;
+      .reference-url {
+        text-size: 0.3em;
       }
       li p {
         line-height: 1.25em;
@@ -82,7 +73,7 @@
       }
       .inverse h1, .inverse h2 {
         color: #f3f3f3;
-        line-height: 0.4em;
+        line-height: 0.8em;
       }
 
       /* Slide-specific styling */
@@ -98,14 +89,16 @@
         height: 92%;
         float: left;
       }
+      .home-left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+       }
       .home-right-column {
-        width: 55%;
+        width: 65%;
         float: right;
         /* padding-top: 1em; */
         top: -1.75em;
         position: relative;
       }
-      .remark-slide-content.home h1 { font-size: 8em; }
 
       /* Two-column layout */
       .left-column {
@@ -113,10 +106,6 @@
         width: 20%;
         height: 92%;
         float: left;
-      }
-      .left-column h2, .left-column h3 {
-        /*color: #586e75;*/
-        color: rgb(119, 119, 119);
       }
       .left-column h2:last-of-type, .left-column h3:last-child {
           color: #000;
@@ -135,47 +124,6 @@
         padding-right: 1em !important;
       }
 
-      .about-pull-left {
-        width: 47%;
-        position: absolute;
-        top: 1em;
-        left: 1em;
-      }
-      .about-pull-right {
-        width: 47%;
-        position: absolute;
-        bottom: 7em;
-        right: 3.5em;
-      }
-      .about-text {
-        position: absolute;
-        width: 47%;
-        right: 5em;
-        top: 1em;
-        text-align: left;
-        vertical-align: top;
-      }
-
-      .contest-0{
-        position: absolute;
-        left: 3em;
-        top: 3em;
-      }
-      .contest-1{
-        position: absolute;
-        right: 5em;
-        top: 5em;
-      }
-      .contest-2{
-        position: absolute;
-        left: 6em;
-        bottom: 3em;
-      }
-      .contest-4{
-        position: absolute;
-        right: 7em;
-        bottom: 4em;
-      }
   </style>
     </head>
     <body>
@@ -183,10 +131,18 @@
            id="source">
 
 name: Title Page
-class: middle, home
+class: middle
 
 .home-left-column[
-# Sweet Rust
+# Introduction to Rust
+
+- **S**afe
+- **W**anted
+- **E**fficient
+- **E**legant
+- **T**yped
+
+## Sweet & Beautiful Programming Language
 ]
 
 .home-right-column[
@@ -194,79 +150,110 @@ class: middle, home
 ]
 
 .footnote[
-  Introduction by Leonids Maslovs <br/>
+  By Leonids Maslovs (@leonardinius) <br/>
   http://leonardinius.github.io/intro-ppt.rs
 ]
 
 ---
-class: about, middle
+class: middle
 
-.about-pull-left[![Wearing many hats](files/ManyHats.jpg)]
-
-.about-text[
-]
+.pull-left[![Wearing many hats](files/ManyHats.jpg)]
+# In IT for ~10 yrs
+## System administrator assistant, Developer, Team leader,..
 
 ----
 
-.about-pull-right[![Galeo logo](files/galeo_logo_RGB.png)]
+.pull-right[![Galeo logo](files/galeo_logo_RGB.png)]
+## Live and work in Riga and spend my days making kick ass things at @galeoconsulting
 
-.footnote[*.reference-url[http://profitablegrowth.com/wp-content/uploads/2010/01/ManyHats.jpg]]
-
+.footnote[.reference-url[*http://profitablegrowth.com/wp-content/uploads/2010/01/ManyHats.jpg]]
 ---
-class: center, middle, inverse
-background-image:url(./files/evolution-of-programming-languages.jpg)
+class: middle
 
-.footnote[*.reference-url[http://xrds.acm.org/images/4833512699_761a3fcc61_b.jpg]]
+.pull-right[![Meme beautiful](files/happy-face-its-beautiful.jpg)]
+
+.left-column[# Why yet another programming language?]
 
 ???
 
----
-class: middle, big-headers
-background-image: url(files/please-like-me.png)
+- People like _BEAUTIFUL_ things.
 
-.contest-0[
-## C/C++?
-]
-.contest-1[
-## Java?
-]
-.contest-2[
-## .Net?
-]
-.contest-4[
-## Ruby?
-]
+- Sometimes _DIFFERENT_ Or _NEW_ is interchangeable with _BEAUTIFUL_.
 
-.footnote[*.reference-url[http://datedaily.mate1.com/wp-content/uploads/2013/09/please-like-me.png]]
----
-class: center, middle, big-headers
+- We as programmers use programming languages as our primary tools. Everyone
+likes new and shiny and beautiful tools.
 
-# C/C++
+- We also believe [that] new and shiny tools produce better results and help to build
+better temples.
 
 ---
-class: middle 
+class: middle
 
-> ## As far as we know, our computer has never had an undetected error. [Weisert] 
+.pull-right[![Realistic expectactions](files/xkcd-realistic-criteria.png)<br/>.reference-url[*http://xkcd.com/1232/]]
+
+.left-column[# Seriously. Why yet another programming language?]
+
+???
+
+- The XKCD comic actually is called 'Realistic Criteria'. 
+
+ - It's simultaneously portrays why _NEW PROGRAMMING LANGUAGES_ are worth 
+   pursuing and exploring...
+
+ - And UN-realistic expectations (/distortion field) towards new/upcoming/hyped
+   programming languages.
+
+- Yes, plenty of programming languages exist. Yes, most of them are not ideal to 
+  some degree or the other.
+
+- We could try to solve all problems with either one of them or "fix" them all
+  at once.
+
+- Would it satisfy our needs for something different, shiny and efficient? Most
+likely it would.
+
+- Is it realistic plan? NO.
 
 ---
-class: middle, center
-![Firefox](files/firefox-512.png)
-![Mozilla](files/mozilla_wordmark_small.png)
+class: center, middle
+
+# Let's talk about the Rust
 
 ---
-class: middle, center, big-headers
+class: center, middle, inverse
 
-# Sweet Rust
+# But first!
 
 ---
-class: 
+class: center, middle, inverse
+
+# It's the way we see each other
+
+![How programming fan boys see each other](files/language-fansboys.jpg)
+.reference-url[*http://www.csee.umbc.edu/courses/331/fall10/images/languageFans.jpg]
+
+???
+
+- It's human nature to create brotherhoods, communities and professional unions.
+
+- Our tools shape our minds and influence our perception. Especially our
+perception of other groups.
+
+- We try to distinguish "us" from "them". We associate certain traits, behaviors
+and looks with neighbour brotherhoods. And, obviously have some idea of
+ourselves: what our strong traits are, what drawbacks are,...
+
+- **And most importantly, what our superhero name would be ;)**
+
+---
+class: middle, inverse
 
 .right-column[
-### **S**afe
-### **W**orldly
-### **E**fficient
-### **E**legant
-### **T**yped
+# So, lets distinguish and define Rustaceans
+## - **W**hat is Rust?
+## - **W**here does it stand?
+## - **W**here does it go?
+## - **W**hat is it's place in the bigger world?
 ]
 
 ---
@@ -283,6 +270,51 @@ class:
 - It's pragmatically innovative and modern.
 
 - Rust is moving fast towards `1.0` release.
+]
+
+???
+
+---
+.left-column[
+  ## What is it?
+  ## Roots?
+]
+
+.right-column[
+- Project was started by Graydon Hoare (Mozilla employee).
+
+- Mozilla began sponsoring project in 2009. Announced in 2010.
+
+- Self-hosted in 2011.
+
+- First public release in January 2012.
+
+---
+
+Mozilla has a lot of C/C++ and feels that pain.
+E.g. famous Firefox memory issues in the past.
+]
+
+???
+
+---
+.left-column[
+  ## What is it?
+  ## Roots?
+  ## Stability?
+]
+
+.right-column[
+
+- ![checked](files/checked.png) Rust 1.0.0-alpha - Friday, Jan 9, 2015.
+
+- ![unchecked](files/unchecked.png) Rust 1.0.0-beta1 - Week of Feb 16, 2015.
+
+- ![unchecked](files/unchecked.png) Rust 1.0.0 - One or more six-week cycles later.
+
+---
+  Starting with 1.0 will move to 6-week release cycle and a menu of release "channels".
+  E.g. _Stable_ and _Nightly builds_.
 ]
 
 ???
@@ -394,30 +426,6 @@ fn C(x: &mut T) { }
 fn D(mut x: T) { }
 fn E(mut x: &T) { }
 fn F(mut x: &mut T) { }
-
-// This code is editable and runnable!
-fn main() {
-    // A simple integer calculator:
-    // `+` or `-` means add or subtract by 1
-    // `*` or `/` means multiply or divide by 2
-
-    let program = "+ + * - /";
-    let mut accumulator = 0;
-
-    for token in program.chars() {
-        match token {
-            '+' => accumulator += 1,
-            '-' => accumulator -= 1,
-            '*' => accumulator *= 2,
-            '/' => accumulator /= 2,
-            _ => { /* ignore everything else */ }
-        }
-    }
-
-    println!("The program \"{}\" calculates the value {}",
-              program, accumulator);
-}
-
 ```
 
 ---
@@ -553,20 +561,11 @@ http://media.giphy.com/media/A6H1A9rhetsXK/giphy.gif
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
     <script>
-      //var lngs='arta, ascetic, dark, default, far, github, googlecode, idea, ir_black, magula, monokai, rainbow, solarized_dark, solarized_light, sunburst, tomorrow, tomorrow-night-blue, tomorrow-night-bright, tomorrow-night, tomorrow-night-eighties, vs, zenburn';
-      //var arr = lngs.split(', ');
-      //var k = parseInt(Math.random() * (arr.length + 1));
-      //var slideshow = remark.create({
-      //  highlightLanguage : 'rust',
-      //  highlightStyle : arr[k]
-      //});
-      //console.log(arr[k]);
-      //slideshow.togglePresenterMode();
-
-      var slideshow = remark.create({
-        highlightLanguage : 'rust',
-        highlightStyle : 'tomorrow' //arr[k]
-      });
+    var slideshow = remark.create({
+      highlightLanguage : 'rust',
+      highlightStyle : 'arta'
+    });
+    slideshow.togglePresenterMode();
     </script>
   </body>
 </html>
