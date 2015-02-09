@@ -11,23 +11,27 @@
       body { font-family: 'Droid Serif'; }
       h1, h2, h3 {
         font-family: 'Yanone Kaffeesatz';
-        font-weight: normal;
+        font-weight: 500;
+        color: #40013E;
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
 
-      h1, h2, h3 { font-weight: 500; color: #40013E; }
-      .remark-slide-content h1 { font-size: 5em; }
-      .remark-slide-content h2 { font-size: 3em; }
+      .remark-slide-content h1 { font-size: 6em; }
+      .remark-slide-content h2 { font-size: 4em; }
       .remark-slide-content h3 { font-size: 2.6em; }
+
+      .remark-slide-content.big-headers h1 { font-size: 9em; }
+      .remark-slide-content.big-headers h2 { font-size: 5em; }
+      .remark-slide-content.big-headers h3 { font-size: 4.6em; }
 
       .footnote {
         position: absolute;
         text-align: left;
         bottom: 0.8em;
         left: 1em;
+        font-size: 0.6em;
       }
       .reference-url a {
-        font-size: 0.6em;
         color: gray;
       }
       li p {
@@ -143,6 +147,35 @@
         bottom: 7em;
         right: 3.5em;
       }
+      .about-text {
+        position: absolute;
+        width: 47%;
+        right: 5em;
+        top: 1em;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .contest-0{
+        position: absolute;
+        left: 3em;
+        top: 3em;
+      }
+      .contest-1{
+        position: absolute;
+        right: 5em;
+        top: 5em;
+      }
+      .contest-2{
+        position: absolute;
+        left: 6em;
+        bottom: 3em;
+      }
+      .contest-4{
+        position: absolute;
+        right: 7em;
+        bottom: 4em;
+      }
   </style>
     </head>
     <body>
@@ -170,6 +203,9 @@ class: about, middle
 
 .about-pull-left[![Wearing many hats](files/ManyHats.jpg)]
 
+.about-text[
+]
+
 ----
 
 .about-pull-right[![Galeo logo](files/galeo_logo_RGB.png)]
@@ -184,21 +220,54 @@ background-image:url(./files/evolution-of-programming-languages.jpg)
 
 ???
 
-- It's human nature to create brotherhoods, communities and professional unions.
+---
+class: middle, big-headers
+background-image: url(files/please-like-me.png)
 
-- Our tools shape our minds and influence our perception. Especially our
-perception of other groups.
+.contest-0[
+## C/C++?
+]
+.contest-1[
+## Java?
+]
+.contest-2[
+## .Net?
+]
+.contest-4[
+## Ruby?
+]
 
-- We try to distinguish "us" from "them". We associate certain traits, behaviors
-and looks with neighbour brotherhoods. And, obviously have some idea of
-ourselves: what our strong traits are, what drawbacks are,...
+.footnote[*.reference-url[http://datedaily.mate1.com/wp-content/uploads/2013/09/please-like-me.png]]
+---
+class: center, middle, big-headers
 
-- **And most importantly, what our superhero name would be ;)**
+# C/C++
 
 ---
-name: popularity-contest
+class: middle 
 
-# Popularity contest
+> ## As far as we know, our computer has never had an undetected error. [Weisert] 
+
+---
+class: middle, center
+![Firefox](files/firefox-512.png)
+![Mozilla](files/mozilla_wordmark_small.png)
+
+---
+class: middle, center, big-headers
+
+# Sweet Rust
+
+---
+class: 
+
+.right-column[
+### **S**afe
+### **W**orldly
+### **E**fficient
+### **E**legant
+### **T**yped
+]
 
 ---
 .left-column[
