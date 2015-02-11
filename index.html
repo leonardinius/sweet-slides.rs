@@ -34,11 +34,13 @@
       .reference-url a {
         color: gray;
       }
+      /*
       li p {
         line-height: 1.25em;
         padding-top: 0.55em;
         padding-bottom: 0.55em;
       }
+      */
       .red { color: #fa0000; }
       .large { font-size: 2em; }
       a, a > code {
@@ -287,29 +289,33 @@ class: center, big-headers
 # C/C++
 
 ---
-continued: true
-
-Memory management
-
----
-continued: true
-
-Dangling pointer
-
----
-continued: true
-
-Thread-safety?
-
----
-continued: true
-
-Expressiveness
-
----
 class: middle, inverse
 
 > ## As far as we know, our computer has never had an undetected error. [Weisert]
+
+---
+## C/C++ struggles
+
+---
+continued: true
+
+### - Memory management
+
+---
+continued: true
+
+### - Dangling pointers
+
+---
+continued: true
+
+### - Concurrency models
+
+---
+background-image: url(files/xkcd-realistic-criteria.png)
+# C++11/14
+
+.footnote[*.reference-url[http://xkcd.com/1232/]]
 
 ---
 class: middle, center
@@ -329,6 +335,42 @@ class:
 
 .sweet-center[
 # Rust
+]
+
+---
+class: center, middle
+
+# Problems
+
+---
+class: center, middle
+## Instability
+
+---
+class: center, middle, inverse
+
+# Rust in action
+
+---
+layout: false
+### Future perspective
+
+- Unix, time-shared OS<br/>
+  \> _ASM, C_
+
+- Desktop as commodity, applications<br/>
+  \> _C/C++, Java_
+
+- Web <br/>
+  \> _PHP, Python, Java, .Net_
+
+- Smartphone<br/>
+  \> _Java, Object-C, Swift_
+
+.block[
+  .pull-right[![It's the question](files/question.jpg)]
+  - **Mobile (battery), Internet of Things** <br/>
+    \> **_C/C++, Go, Rust..?_**
 ]
 
 ---
