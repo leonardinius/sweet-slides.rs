@@ -179,9 +179,15 @@
         bottom: 4em;
       }
 
+      .realistic-criteria-img img {
+        position: absolute;
+        top: 38%;
+        left: 36%;
+      }
+
       .sweet-right-column h1,
       .sweet-right-column h2,
-      .sweet-right-column h3 
+      .sweet-right-column h3
       {
         margin-top: 0.3em;
         margin-bottom: 0.3em;
@@ -284,12 +290,12 @@ background-image: url(files/please-like-me.png)
 
 .footnote[*.reference-url[http://datedaily.mate1.com/wp-content/uploads/2013/09/please-like-me.png]]
 ---
-class: center, big-headers
+class: center, inverse, middle, big-headers
 
 # C/C++
 
 ---
-class: middle, inverse
+class: middle
 
 > ## As far as we know, our computer has never had an undetected error. [Weisert]
 
@@ -300,7 +306,6 @@ class: middle, inverse
 continued: true
 
 ### - Memory management
-
 ---
 continued: true
 
@@ -312,8 +317,12 @@ continued: true
 ### - Concurrency models
 
 ---
-background-image: url(files/xkcd-realistic-criteria.png)
+class: center
 # C++11/14
+
+.realistic-criteria-img[
+ ![Realistic criteria](files/xkcd-realistic-criteria.png)
+]
 
 .footnote[*.reference-url[http://xkcd.com/1232/]]
 
@@ -323,28 +332,57 @@ class: middle, center
 ![Mozilla](files/mozilla_wordmark_small.png)
 
 ---
-class:
-
-.sweet-right-column[
-## **S**afe
-## **W**orldly
-## **E**fficient
-## **E**legant
-## **T**yped
-]
+class: inverse
 
 .sweet-center[
 # Rust
 ]
 
+.sweet-right-column[
+## **S**afe
+## **W**orldly
+## **E**fficient
+## **E**xtensible
+## **T**yped
+]
+
 ---
-class: center, middle
+## Safe
+### - guaranteed memory safety
+### - move semantics
+### - threads without data races
+
+---
+## Worldly
+### - C bindings / FFI
+### - minimal runtime
+### - <strike> GC, green threads, stack unwinding</strike>
+---
+## Efficient
+### - zero-cost abstractions
+### - LLVM / CLang level of optimizations
+
+---
+## Extensible
+### - hygienic macros
+### - linters
+### - plugins
+
+---
+## Typed
+### - structs, traits, type inference
+### - trait-based generics
+### - pattern matching
+
+---
+class: center, middle, inverse
+
+# Some code
+
+---
+class: center, middle, inverse
 
 # Problems
-
----
-class: center, middle
-## Instability
 
 ---
 class: center, middle, inverse
