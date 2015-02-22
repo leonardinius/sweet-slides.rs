@@ -293,14 +293,14 @@ class: about, middle
 
 A little note about myself.
 
-I'm in professional IT market for arount 10 years now and during that
+I'm in professional IT market for around 10 years now and during that
 period I used to wear different hats on:
 - starting from system administrator assistant
 - continuing to different development positions
 - and periodically filling some kind of Architect, 'Archi'-type positions.
 
-At the moment I'm working with GaleoConsulting and my official title
-is the "Lead technologist".
+At the moment I'm working with GaleoConsulting and my official job
+title is the "Lead technologist".
 
 ---
 class: center, middle, inverse, h-shadow, h-why, big-headers
@@ -313,7 +313,7 @@ background-image:url(./files/evolution-of-programming-languages.jpg)
 ???
 
 I could fill the whole talk with awesome language concepts,
-cool-looking code snippets and make you want to make sweet love with
+cool-looking code snippets and make you want to make sweet love to
 Rust in the end of the talk, because of that.
 
 But! Instead I'm going to concentrate on **Why?** you should give it a
@@ -322,7 +322,8 @@ spin first.
 - Why are we here today?
 - Why do we need different tools?
 
-And the answer is simple. Because we need and deserve better.
+And the answer actually is plain simple. Because we need and deserve
+better.
 
 ---
 class: middle, big-headers
@@ -410,7 +411,7 @@ different and unexpected places. And they were undetectable until
 execution, or at least I didn't know how to detect and prevent them.
 
 ---
-class: center, middle, inverse, h-shadow
+class: center, middle, h-shadow
 # C/C++ struggles
 
 ![xkcd pointers](files/xkcd-pointers.png)
@@ -425,24 +426,27 @@ Which brings us to C/C++ struggles
 
 ## - Memory management
 ???
-Necessity to manually allocate and free all resources.
-Problems: Double frees, memory leaks.
+- Necessity to manually allocate and free all resources.
+**Problems:** Double frees, memory leaks.
 
 ---
 continued: true
 ## - Dangling pointers
 ???
-Problems: Null pointer dereference, use after free.
+**Problems:** It's NULL pointer dereference, pointer use after free.
 ---
 continued: true
 
 ## - Concurrency models
 ???
-Concurrency is hard.
-C/C++ gives you no built-in capabilities or machinery to simplify
-reasoning about concurrency problems, to avoid and catch most of the
-common problems early on, during development/compilation, not during
-execution in production.
+
+Concurrency in general is hard.  C/C++ give you no built-in
+capabilities or machinery to simplify reasoning about concurrency, to
+avoid and catch most of the common problems early on, though API
+restrictions or compilation errors, not during execution in
+production.
+**Problems:** race conditions, deadlocks.
+
 ---
 class: center
 # C++11/14
@@ -453,10 +457,43 @@ class: center
 
 .footnote[*.reference-url[http://xkcd.com/1232/]]
 
+???
+
+Hold on a second. What about C++11/14 standards? Don't they do all
+possible to address those issues?
+
+C/C++ has the advantage of billions lines of existing and working
+source code out there, but it also means the backward compatibility
+will always drag it in, the only way of addressing those issues is to
+extend languages, making them more complex, more difficult to
+understand, yet not giving safe and convenient enough safety net..
+
+So, they definitely do their best, but is it realistic to expect it
+any time soon? And could you wait that long?
+
 ---
 class: middle, center
 ![Firefox](files/Browser-Firefox-Icon-Black.jpg)
 ![Mozilla](files/mozilla_wordmark_small.png)
+
+???
+
+And Mozilla couldn't. They are enormous organization with enormously
+large code bases, most of which are in fact C/C++ solutions.
+
+Mozilla's Firefox used to have "memory hog" reputation, and also have
+had quite a few instability periods. Most of it could also be
+attributed to the fact that large code bases are difficult to reason
+about, especially if they are C/C++ code bases.
+
+Let's not forget that Mozilla develops resource usage aware solutions
+(CPU and RAM). They are: browsers (Firefox), platforms (Firefox OS).
+They are highly sensitive on resources, especially on mobile, where
+the battery life is major topic. So, your average scripting language
+(Python) or web-scale application development languages (Java, .Net)
+are not an option.
+
+So, Mozilla definitely felt the pain and acted upon it.
 
 ---
 class: inverse, h-shadow
@@ -472,6 +509,17 @@ class: inverse, h-shadow
 ## **E**xtensible
 ## **T**yped
 ]
+
+???
+
+And Mozilla comes up with new generic programming language, Rust.
+
+The official punch line is that "Rust is a systems programming
+language pursuing the trifecta: safe, fast, and concurrent."
+
+I, personally, find Rust very _SWEET_.
+
+_Read keywords from the slide_
 
 ---
 ## Safe
