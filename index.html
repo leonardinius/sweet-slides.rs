@@ -28,11 +28,16 @@
 
       .remark-slide-content.h-shadow h1,
       .remark-slide-content.h-shadow h2,
-      .remark-slide-content.h-shadow h3    { text-shadow: 0.1em 0.1em 0.2em black; }
+      .remark-slide-content.h-shadow h3    { text-shadow: 0.1em 0.1em 0.2em gray; }
 
-    .remark-slide-content.h-yellow h1,
-      .remark-slide-content.h-yellow h2,
-      .remark-slide-content.h-yellow h3    { color: yellow; }
+      .remark-slide-content.inverse.h-shadow h1,
+      .remark-slide-content.inverse.h-shadow h2,
+      .remark-slide-content.inverse.h-shadow h3    { text-shadow: 0.1em 0.1em 0.2em black; }
+
+
+      .remark-slide-content.h-why h1,
+      .remark-slide-content.h-why h2,
+      .remark-slide-content.h-why h3    { color: #EECE67; }
 
       .footnote {
         position: absolute;
@@ -106,18 +111,21 @@
       /* Title page Two-column layout */
       .home-left-column {
         color: #777;
-        width: 35%;
+        width: 55%;
         height: 92%;
         float: left;
+        position: relative;
+        left: -5%;
       }
       .home-right-column {
-        width: 55%;
+        width:45%;
         float: right;
+        position: relative;
         /* padding-top: 1em; */
         top: -1.75em;
-        position: relative;
+        left: -8%;
       }
-      .remark-slide-content.home h1 { font-size: 5.5em; }
+      .remark-slide-content.home h1 { font-size: 6em; }
 
       /* Two-column layout */
       .left-column {
@@ -263,8 +271,11 @@ class: middle, home
 
 Hello,
 
-My name is Leonids Maslovs and today I will introduce you into the
-beautiful and sweet world of Rust programming language.
+My name is Leonids Maslovs and my talk title is "The Sweet Flavour of
+Rust"
+
+Today I will introduce you into the beautiful and sweet world of Rust
+programming language.
 
 ---
 class: about, middle
@@ -285,15 +296,14 @@ A little note about myself.
 I'm in professional IT market for arount 10 years now and during that
 period I used to wear different hats on:
 - starting from system administrator assistant
-- to different development positions
-- and ending with some 'Archi'-type positions.
+- continuing to different development positions
+- and periodically filling some kind of Architect, 'Archi'-type positions.
 
 At the moment I'm working with GaleoConsulting and my official title
-(mostly because I'm also co-owner of the company) is the "Lead
-technologist".
+is the "Lead technologist".
 
 ---
-class: center, middle, inverse, h-shadow, h-yellow, big-headers
+class: center, middle, inverse, h-shadow, h-why, big-headers
 background-image:url(./files/evolution-of-programming-languages.jpg)
 
 # Why?
@@ -302,17 +312,17 @@ background-image:url(./files/evolution-of-programming-languages.jpg)
 
 ???
 
-So.. I would like to start with the simple question **"Why?"**
-
-- Why? Why are here today?
-- Why? Why do we even care?
-- Why? Why do we want to try and use different tools?
-
-I could fill the whole talk with cool-factor appealing code snippets
-and make you want to make sweet love with Rust, because of that.
+I could fill the whole talk with awesome language concepts,
+cool-looking code snippets and make you want to make sweet love with
+Rust in the end of the talk, because of that.
 
 But! Instead I'm going to concentrate on **Why?** you should give it a
-spin.
+spin first.
+
+- Why are we here today?
+- Why do we need different tools?
+
+And the answer is simple. Because we need and deserve better.
 
 ---
 class: middle, big-headers
@@ -334,28 +344,35 @@ background-image: url(files/please-like-me.png)
 .footnote[*.reference-url[http://datedaily.mate1.com/wp-content/uploads/2013/09/please-like-me.png]]
 
 ???
-Does it look familiar?  It certainly does to me.
+Does it look any familiar? It certainly does to me.
 
-Let's make a little contest here. What is the most popular programming
-language here, in this room? Please raise your hands.
+Let's make a little quiz here. What is the most popular programming
+language here, in this room? Please raise your hands if you ever used
+that language. Professionally, or during studies...
 
 - Python?
-- Java? (forest of hands)
+- Java? (forest of hands, hopefully)
 - C#?
-- Ruby?
+- Any hipster/web-kid Ruby fans out there?
 - I don't know... C/C++?
 
 And what language is the most popular in world, outside of this room?
-What do you think? Is it the one our OS-es are programmed with, our
-mobile phones are programmed with, bank systems are programmed with?
+What do you think?
+- Is it the one we use to develop online web-shops?
+- Or develop new set of Big Data crunching reports?
+- Or is it our OS-es are programmed with?
+- Or our mobile phones are programmed with?
 
 We are not talking about the most trending programming language on the
 Github front page, or the hottest job advertisement in Silicon Valley
-(it's scala, everybody knows it, shhhh...). We are talking about the
-code most of the programmer population works with on daily basis.
+(it's Scala, everybody knows it. But shhhh..., you haven't heard it
+from me).
+
+We are talking about the code most of the programmer population works
+with on daily basis.
 
 ---
-class: center, inverse, middle, big-headers
+class: center, middle, big-headers,h-shadow
 
 # C/C++
 
@@ -363,8 +380,10 @@ class: center, inverse, middle, big-headers
 It's C/C++ and you know it.
 
 - How many of you had first hand experience with C or C++ in your
-professional life? Please raise your hands?
-- Or during studies?
+professional life? Or during studies?
+
+- Please raise your hands.
+
 - Did you enjoy it?
 
 ---
@@ -375,40 +394,49 @@ class: middle
 
 ???
 
-The quote is about IBM mainframes, and I know, it's far-stretched...,
-but.. How many of you had that feeling about your code bases?
+The quote originally is about the particular line of IBM mainframes. I
+know, it's far-stretched..., but.. How many of you had that feeling
+about your code bases?
 
-I remember the time (during my studies) when I tried to add
-asynchronous file management capabilities to FAR manager using
-combination of C/C++. I, definitely was complete newbie at that
-point,but it struck me - I was unable to reason about my code base. It
-was too difficult to reason about, it threw all sorts of errors in
-different and unexpected places.
+I don't do any system-level application development lately. That side
+of things is a new spare time hobby of mine.
+
+However, I clearly remember the time (during my studies) when I tried
+to add asynchronous file management capabilities to FAR manager using
+combination of C/C++. I, definitely was complete newbie at that point,
+but it struck me - I was unable to reason about my code base. It was
+too difficult to reason about, it threw all sorts of errors in
+different and unexpected places. And they were undetectable until
+execution, or at least I didn't know how to detect and prevent them.
 
 ---
-## C/C++ struggles
+class: center, middle, inverse, h-shadow
+# C/C++ struggles
+
+![xkcd pointers](files/xkcd-pointers.png)
+
+.footnote[*.reference-url[http://xkcd.com/138/]]
 
 ???
 
-It brings us to C/C++ struggles.
+Which brings us to C/C++ struggles
 
 ---
-continued: true
 
-### - Memory management
+## - Memory management
 ???
 Necessity to manually allocate and free all resources.
 Problems: Double frees, memory leaks.
+
 ---
 continued: true
-
-### - Dangling pointers
+## - Dangling pointers
 ???
 Problems: Null pointer dereference, use after free.
 ---
 continued: true
 
-### - Concurrency models
+## - Concurrency models
 ???
 Concurrency is hard.
 C/C++ gives you no built-in capabilities or machinery to simplify
@@ -427,11 +455,11 @@ class: center
 
 ---
 class: middle, center
-![Firefox](files/firefox-256.png)
+![Firefox](files/Browser-Firefox-Icon-Black.jpg)
 ![Mozilla](files/mozilla_wordmark_small.png)
 
 ---
-class: inverse
+class: inverse, h-shadow
 
 .sweet-center[
 # Rust
@@ -474,17 +502,17 @@ class: inverse
 ### - trait-based generics
 
 ---
-class: center, middle, inverse
+class: center, middle, inverse, h-shadow
 
 # Some code
 
 ---
-class: center, middle, inverse
+class: center, middle, inverse, h-shadow
 
 # Problems
 
 ---
-class: center, middle, inverse
+class: center, middle, inverse, h-shadow
 
 # Rust in action
 
@@ -511,14 +539,22 @@ layout: false
 ]
 
 ---
-class: center, middle
+class:
 
-![Periodic table of Rust Types](files/The_Periodic_Table_of_Rust_Types.png)
+### Rust Lang Homepage
 
-.footnote[*.reference-url[http://cosmic.mearie.org/2014/01/periodic-table-of-rust-types/]]
+http://www.rust-lang.org/
+
+### Guide, Introduction Book
+
+http://doc.rust-lang.org/book/
+
+### Web interface to Rust
+
+https://play.rust-lang.org/
 
 ---
-class: center, middle, inverse
+class: center, middle, inverse, h-shadow
 
 # Thank you
 
@@ -544,3 +580,4 @@ class: center, middle, inverse
     </script>
   </body>
 </html>
+<!-- vim: set ts=4 sw=2 tw=70 colorcolumn=71: -->
