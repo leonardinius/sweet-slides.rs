@@ -354,15 +354,14 @@ that language. Professionally, or during studies...
 - Python?
 - Java? (forest of hands, hopefully)
 - C#?
-- Any hipster/web-kid Ruby fans out there?
-- I don't know... C/C++?
+- Any web-hipster Ruby fans out there?
+- Something else?
 
 And what language is the most popular in world, outside of this room?
 What do you think?
 - Is it the one we use to develop online web-shops?
 - Or develop new set of Big Data crunching reports?
-- Or is it our OS-es are programmed with?
-- Or our mobile phones are programmed with?
+- Or the one our smartphone games are programmed with?
 
 We are not talking about the most trending programming language on the
 Github front page, or the hottest job advertisement in Silicon Valley
@@ -379,6 +378,10 @@ class: center, middle, big-headers,h-shadow
 
 ???
 It's C/C++ and you know it.
+
+It has long, interesting and productive history, with billions and
+billions lines of code running on billions and billions devices out
+there.
 
 - How many of you had first hand experience with C or C++ in your
 professional life? Or during studies?
@@ -479,24 +482,25 @@ class: middle, center
 ???
 
 And Mozilla couldn't. They are enormous organization with enormously
-large code bases, most of which are in fact C/C++ solutions.
+large code bases, most of which are in fact C/C++ code bases.
 
 Mozilla's Firefox used to have "memory hog" reputation, and also have
-had quite a few instability periods. Most of it could also be
+had quite a few instability periods. Lots of them could also be
 attributed to the fact that large code bases are difficult to reason
 about, especially if they are C/C++ code bases.
 
-Let's not forget that Mozilla develops resource usage aware solutions
-(CPU and RAM). They are: browsers (Firefox), platforms (Firefox OS).
-They are highly sensitive on resources, especially on mobile, where
-the battery life is major topic. So, your average scripting language
-(Python) or web-scale application development languages (Java, .Net)
-are not an option.
+Let's not forget that Mozilla develops resource saving/frugal
+solutions. They are: browsers (Firefox), platforms (Firefox OS).
+Those solutions are highly sensitive on resources spending, especially
+on mobile, where the battery life is major concern.
+
+So, your average scripting language (Python) or web-scale application
+development languages (Java, .Net) are not an option.
 
 So, Mozilla definitely felt the pain and acted upon it.
 
 ---
-class: inverse, h-shadow
+class: h-shadow
 
 .sweet-center[
 # Rust
@@ -523,14 +527,14 @@ _Read keywords from the slide_
 
 ---
 ## Safe
+### - immutability by default, move semantics
 ### - guaranteed memory safety
-### - move semantics
 ### - threads without data races
 
 ---
 ## Worldly
 ### - C bindings / FFI
-### - minimal runtime
+### - minimal, disconnectable runtime
 ### - <strike> GC, green threads, stack unwinding</strike>
 ---
 ## Efficient
