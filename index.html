@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Introduction to Rust - SWEET programming language</title>
+    <title>
+      The Sweet Flavour of Rust, introduction
+    </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -23,6 +25,14 @@
       .remark-slide-content.big-headers h1 { font-size: 9em; }
       .remark-slide-content.big-headers h2 { font-size: 5em; }
       .remark-slide-content.big-headers h3 { font-size: 4.6em; }
+
+      .remark-slide-content.h-shadow h1,
+      .remark-slide-content.h-shadow h2,
+      .remark-slide-content.h-shadow h3    { text-shadow: 0.1em 0.1em 0.2em black; }
+
+    .remark-slide-content.h-yellow h1,
+      .remark-slide-content.h-yellow h2,
+      .remark-slide-content.h-yellow h3    { color: yellow; }
 
       .footnote {
         position: absolute;
@@ -107,7 +117,7 @@
         top: -1.75em;
         position: relative;
       }
-      .remark-slide-content.home h1 { font-size: 8em; }
+      .remark-slide-content.home h1 { font-size: 5.5em; }
 
       /* Two-column layout */
       .left-column {
@@ -140,13 +150,13 @@
       .about-pull-left {
         width: 47%;
         position: absolute;
-        top: 1em;
+        top: 7em;
         left: 1em;
       }
       .about-pull-right {
         width: 47%;
         position: absolute;
-        bottom: 7em;
+        top: 10em;
         right: 3.5em;
       }
       .about-text {
@@ -237,7 +247,7 @@ name: Title Page
 class: middle, home
 
 .home-left-column[
-# Sweet Rust
+# The Sweet Flavour of Rust
 ]
 
 .home-right-column[
@@ -246,8 +256,15 @@ class: middle, home
 
 .footnote[
   Introduction by Leonids Maslovs <br/>
-  http://leonardinius.github.io/intro-ppt.rs
+  http://leonardinius.github.io/sweet-slides.rs
 ]
+
+???
+
+Hello,
+
+My name is Leonids Maslovs and today I will introduce you into the
+beautiful and sweet world of Rust programming language.
 
 ---
 class: about, middle
@@ -257,65 +274,147 @@ class: about, middle
 .about-text[
 ]
 
-----
-
 .about-pull-right[![Galeo logo](files/galeo_logo_RGB.png)]
 
 .footnote[*.reference-url[http://profitablegrowth.com/wp-content/uploads/2010/01/ManyHats.jpg]]
 
+???
+
+A little note about myself.
+
+I'm in professional IT market for arount 10 years now and during that
+period I used to wear different hats on:
+- starting from system administrator assistant
+- to different development positions
+- and ending with some 'Archi'-type positions.
+
+At the moment I'm working with GaleoConsulting and my official title
+(mostly because I'm also co-owner of the company) is the "Lead
+technologist".
+
 ---
-class: center, middle, inverse
+class: center, middle, inverse, h-shadow, h-yellow, big-headers
 background-image:url(./files/evolution-of-programming-languages.jpg)
+
+# Why?
 
 .footnote[*.reference-url[http://xrds.acm.org/images/4833512699_761a3fcc61_b.jpg]]
 
 ???
+
+So.. I would like to start with the simple question **"Why?"**
+
+- Why? Why are here today?
+- Why? Why do we even care?
+- Why? Why do we want to try and use different tools?
+
+I could fill the whole talk with cool-factor appealing code snippets
+and make you want to make sweet love with Rust, because of that.
+
+But! Instead I'm going to concentrate on **Why?** you should give it a
+spin.
 
 ---
 class: middle, big-headers
 background-image: url(files/please-like-me.png)
 
 .contest-0[
-## C/C++?
+## Python?
 ]
 .contest-1[
 ## Java?
 ]
 .contest-2[
-## .Net?
+## C#?
 ]
 .contest-4[
 ## Ruby?
 ]
 
 .footnote[*.reference-url[http://datedaily.mate1.com/wp-content/uploads/2013/09/please-like-me.png]]
+
+???
+Does it look familiar?  It certainly does to me.
+
+Let's make a little contest here. What is the most popular programming
+language here, in this room? Please raise your hands.
+
+- Python?
+- Java? (forest of hands)
+- C#?
+- Ruby?
+- I don't know... C/C++?
+
+And what language is the most popular in world, outside of this room?
+What do you think? Is it the one our OS-es are programmed with, our
+mobile phones are programmed with, bank systems are programmed with?
+
+We are not talking about the most trending programming language on the
+Github front page, or the hottest job advertisement in Silicon Valley
+(it's scala, everybody knows it, shhhh...). We are talking about the
+code most of the programmer population works with on daily basis.
+
 ---
 class: center, inverse, middle, big-headers
 
 # C/C++
+
+???
+It's C/C++ and you know it.
+
+- How many of you had first hand experience with C or C++ in your
+professional life? Please raise your hands?
+- Or during studies?
+- Did you enjoy it?
 
 ---
 class: middle
 
 > ## As far as we know, our computer has never had an undetected error. [Weisert]
 
+
+???
+
+The quote is about IBM mainframes, and I know, it's far-stretched...,
+but.. How many of you had that feeling about your code bases?
+
+I remember the time (during my studies) when I tried to add
+asynchronous file management capabilities to FAR manager using
+combination of C/C++. I, definitely was complete newbie at that
+point,but it struck me - I was unable to reason about my code base. It
+was too difficult to reason about, it threw all sorts of errors in
+different and unexpected places.
+
 ---
 ## C/C++ struggles
+
+???
+
+It brings us to C/C++ struggles.
 
 ---
 continued: true
 
 ### - Memory management
+???
+Necessity to manually allocate and free all resources.
+Problems: Double frees, memory leaks.
 ---
 continued: true
 
 ### - Dangling pointers
-
+???
+Problems: Null pointer dereference, use after free.
 ---
 continued: true
 
 ### - Concurrency models
-
+???
+Concurrency is hard.
+C/C++ gives you no built-in capabilities or machinery to simplify
+reasoning about concurrency problems, to avoid and catch most of the
+common problems early on, during development/compilation, not during
+execution in production.
 ---
 class: center
 # C++11/14
@@ -412,6 +511,13 @@ layout: false
 ]
 
 ---
+class: center, middle
+
+![Periodic table of Rust Types](files/The_Periodic_Table_of_Rust_Types.png)
+
+.footnote[*.reference-url[http://cosmic.mearie.org/2014/01/periodic-table-of-rust-types/]]
+
+---
 class: center, middle, inverse
 
 # Thank you
@@ -434,6 +540,7 @@ class: center, middle, inverse
         highlightLanguage : 'rust',
         highlightStyle : 'tomorrow' //arr[k]
       });
+      slideshow.togglePresenterMode();
     </script>
   </body>
 </html>
