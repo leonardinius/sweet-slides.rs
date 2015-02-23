@@ -16,6 +16,10 @@
         font-weight: 500;
         color: #40013E;
       }
+      h3, h4, h5, h6 {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+      }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
 
       .remark-slide-content h1 { font-size: 6em; }
@@ -197,6 +201,11 @@
         bottom: 4em;
       }
 
+      .h-last-highlighted h2:last-of-type,
+      .h-last-highlighted h3:last-child {
+        text-shadow: 2px 2px 5px gray;
+       }
+      
       .realistic-criteria-img img {
         position: absolute;
         top: 38%;
@@ -415,6 +424,7 @@ execution, or at least I didn't know how to detect and prevent them.
 
 ---
 class: center, middle
+
 # C/C++ struggles
 
 ![xkcd pointers](files/xkcd-pointers.png)
@@ -426,33 +436,44 @@ class: center, middle
 Which brings us to C/C++ struggles
 
 ---
+class: h-last-highlighted
 
 ## - Memory management
+
 ???
+
 - Necessity to manually allocate and free all resources.
-**Problems:** Double frees, memory leaks.
+
+  **Problems:** Double frees, memory leaks.
 
 ---
 continued: true
+
 ## - Dangling pointers
+
 ???
-**Problems:** It's NULL pointer dereference, pointer use after free.
+
+- **Problems:** Uninitialized pointers, NULL pointer dereference, use
+after free.
 
 ---
 continued: true
 
 ## - Concurrency models
+
 ???
 
-Concurrency in general is hard.  C/C++ give you no built-in
+- Concurrency in general is hard.  C/C++ give you no built-in
 capabilities or machinery to simplify reasoning about concurrency, to
 avoid and catch most of the common problems early on, though API
 restrictions or compilation errors, not during execution in
 production.
-**Problems:** race conditions, deadlocks.
+
+  **Problems:** race conditions, deadlocks.
 
 ---
 class: center
+
 # C++11/14
 
 .realistic-criteria-img[
@@ -477,6 +498,7 @@ any time soon? And could you wait that long?
 
 ---
 class: middle, center
+
 ![Firefox](files/Browser-Firefox-Icon-Black.jpg)
 ![Mozilla](files/mozilla_wordmark_small.png)
 
@@ -530,54 +552,68 @@ _Read keywords from the slide_
 ---
 
 ## Safe
-### - guaranteed memory safety
-### - threads without data races
-### - immutability, move semantics
+### - Memory safety, no wild pointers
+### - Typestate system, no null pointers
+### - Mutability control, immutable by default
+### - Side-effect control, pure by default
+
+.footnote[*.reference-url[http://www.steveklabnik.com/fosdem2015/]]
+
+???
+
+On _Side-effect control_:
+- You can break the rules
+- You have to authorize _where_ and _how_
+- In _a standard way_, that's integrated into the language and easy to
+audit.
 
 ---
 
 ## Worldly
 ### - <strike> GC, green threads, stack unwinding</strike>
-### - minimal, disconnectable runtime
+### - Minimal, yet disconnectable runtime
 ### - C bindings / FFI
 
 ---
 
 ## Efficient
 ### - zero-cost abstractions
-### - LLVM level of optimizations
+### - LLVM type and level of optimizations
 
 ---
 
 ## Extensible
-### - hygienic macros
-### - linters
-### - plugins
+### - Hygienic macros
+### - Linters
+### - Plugins
 
 ---
 
 ## Typed
-### - structs, traits, type inference
-### - pattern matching
-### - trait-based generics
+
+### - Not "everything is an object"
+### - Multi-paradigm: Structs, Traits 
+### - Trait-based generics, Type inference,Pattern matching
 
 ---
-class: center, middle, inverse, h-shadow
+
+class: center, middle, h-shadow
 
 # Some code
 
 ---
-class: center, middle, inverse, h-shadow
+class: center, middle, h-shadow
 
 # Problems
 
 ---
-class: center, middle, inverse, h-shadow
+class: center, middle, h-shadow
 
 # Rust in action
 
 ---
 layout: false
+
 ### Future perspective
 
 \- Unix, time-shared OS<br/>
@@ -599,19 +635,43 @@ layout: false
 ]
 
 ---
-class:
 
-### Rust Lang Homepage
+### Introductions
 
-http://www.rust-lang.org/
+#### - 30 min introduction into Rust
+http://doc.rust-lang.org/nightly/intro.html
 
-### Guide, Introduction Book
-
+#### - Guide, Introduction Book
 http://doc.rust-lang.org/book/
 
-### Web interface to Rust
+#### - Rust by Example
+http://rustbyexample.com/
 
-https://play.rust-lang.org/
+#### - Rust for CXX programmers
+https://github.com/rust-lang/rust/wiki/Rust-for-CXX-programmers
+
+---
+
+### Discussions / News
+
+#### - User forum
+http://users.rust-lang.org/
+
+#### - Reddit /r/rust
+http://www.reddit.com/r/rust/
+
+#### - \#rust on irc.mozilla.org
+https://chat.mibbit.com/?server=irc.mozilla.org&channel=%23rust
+
+#### - This Week in Rust
+http://this-week-in-rust.org/
+
+---
+class: center
+
+## Try Rust online
+
+## https://play.rust-lang.org/
 
 ---
 class: center, middle, inverse, h-shadow
