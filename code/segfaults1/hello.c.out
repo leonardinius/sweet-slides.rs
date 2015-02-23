@@ -1,0 +1,4 @@
+λ ~/segfaults/ make hello && ./hello
+cc     hello.c   -o hello
+[1]    6015 segmentation fault  ./hello
+

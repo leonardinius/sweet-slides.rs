@@ -1,0 +1,4 @@
+λ ~/code/segfaults2/ make hello && ./hello
+g++     hello.cpp   -o hello
+[1]    8923 segmentation fault  ./hello
+

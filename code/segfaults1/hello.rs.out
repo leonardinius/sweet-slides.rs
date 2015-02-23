@@ -1,0 +1,6 @@
+λ ~/code/segfaults/ rustc hello.rs
+hello.rs:3:5: 3:13 error: cannot assign to immutable borrowed content `*s`
+hello.rs:3     *s = "H";
+               ^~~~~~~~
+error: aborting due to previous error
+

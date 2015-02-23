@@ -1,0 +1,12 @@
+$ rustc scoped-hello.rs && ./scoped-hello
+Hello, world!
+Hello, world!
+Hello, world!
+Hello, world!
+Hello, world!
+Hello, world!
+Hello, world!
+Hello, world!
+Hello, world!
+Hello, world!
+

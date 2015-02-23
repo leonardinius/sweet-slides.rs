@@ -1,0 +1,4 @@
+:set paste
+λ ~/code/segfaults2/ rustc hello.rs && ./hello
+Hello world
+
