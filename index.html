@@ -20,7 +20,8 @@
         margin-top: 0.5em;
         margin-bottom: 0.5em;
       }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono';}
+      .remark-code-line-highlighted     { background-color: #373832; }
 
       .remark-slide-content h1 { font-size: 6em; }
       .remark-slide-content h2 { font-size: 4em; }
@@ -53,13 +54,7 @@
       .reference-url a {
         color: gray;
       }
-      /*
-      li p {
-        line-height: 1.25em;
-        padding-top: 0.55em;
-        padding-bottom: 0.55em;
-      }
-      */
+
       .red { color: #fa0000; }
       .large { font-size: 2em; }
       a, a > code {
@@ -68,7 +63,10 @@
       }
       pre {
         border-left: 0.4em solid #d7d7d7;
-        padding: 1em !important;
+        padding-left: 1em !important;
+        padding-right: 1em !important;
+        padding-top: 0.2em !important;
+        padding-bottom: 0.2em !important;
       }
       code {
         -moz-border-radius: 5px;
@@ -76,8 +74,7 @@
         background: #e7e8e2;
         border-radius: 5px;
       }
-      .remark-code,.remark-inline-code { font-family: 'Ubuntu Mono'; }
-      .remark-code-line-highlighted     { background-color: #373832; }
+
       .pull-left {
         float: left;
         width: 47%;
@@ -205,7 +202,7 @@
       .h-last-highlighted h3:last-child {
         text-shadow: 2px 2px 5px gray;
        }
-      
+
       .realistic-criteria-img img {
         position: absolute;
         top: 38%;
@@ -411,14 +408,13 @@ The quote originally is about the particular line of IBM mainframes. I
 know, it's far-stretched..., but.. How many of you had that feeling
 about your code bases?
 
-I don't do any system-level application development lately. That side
-of things is a new spare time hobby of mine.
+I don't do any C/C++ application development lately.
 
-However, I clearly remember the time (during my studies) when I tried
-to add asynchronous file management capabilities to FAR manager using
-combination of C/C++. I, definitely was complete newbie at that point,
-but it struck me - I was unable to reason about my code base. It was
-too difficult to reason about, it threw all sorts of errors in
+However, I distinctively remember the time (during my studies) when I
+tried to add asynchronous file management capabilities to FAR manager
+using combination of C/C++. I, definitely was complete newbie at that
+point, but it struck me - I was unable to reason about my code base.
+It was too difficult to reason about, it threw all sorts of errors in
 different and unexpected places. And they were undetectable until
 execution, or at least I didn't know how to detect and prevent them.
 
@@ -561,6 +557,12 @@ _Read keywords from the slide_
 
 ???
 
+On _NULL pointers_:
+- Tony Hoare introduced `Nullable types` in Algol in 1965.
+- And it later described it as "billion dollar mistake".
+- We don't want that in our code, we don't want to repeat the same
+mistakes all over again.
+
 On _Side-effect control_:
 - You can break the rules
 - You have to authorize _where_ and _how_
@@ -577,7 +579,7 @@ audit.
 ---
 
 ## Efficient
-### - zero-cost abstractions
+### - Zero-cost abstractions
 ### - LLVM type and level of optimizations
 
 ---
@@ -592,7 +594,7 @@ audit.
 ## Typed
 
 ### - Not "everything is an object"
-### - Multi-paradigm: Structs, Traits 
+### - Multi-paradigm: Structs, Traits
 ### - Trait-based generics, Type inference,Pattern matching
 
 ---
@@ -602,14 +604,216 @@ class: center, middle, h-shadow
 # Some code
 
 ---
-class: center, middle, h-shadow
 
-# Problems
+### Memory access & Ownership | C
+
+```C
+int main(void)
+{
+    char *s = "hello world";
+    *s = 'H';
+}
+
+```
+
+---
+continued: true
+
+```shell
+$ make hello && ./hello
+cc     hello.c   -o hello
+[1]    6015 segmentation fault  ./hello
+
+```
+
+---
+
+### Memory access & Ownership | Rust
+
+```rust
+fn main() {
+    let s = &"hello world";
+    *s = "H";
+}
+```
+
+```shell
+$ rustc hello.rs
+hello.rs:3:5: 3:13 error: cannot assign to immutable borrowed content `*s`
+hello.rs:3     *s = "H";
+               ^~~~~~~~
+error: aborting due to previous error
+```
+
+---
+
+### Memory access & Ownership | C++
+
+```
+#include<iostream>
+#include<vector>
+#include<string>
+
+int main() {
+  std::vector<std::string> v;
+
+  v.push_back("Hello");
+
+  std::string& x = v[0];
+
+  v.push_back("world");
+
+  std::cout << x;
+}
+```
+
+---
+continued:true
+
+```shell
+$ make hello && ./hello
+g++     hello.cpp   -o hello
+[1]    8923 segmentation fault  ./hello
+
+```
+
+---
+
+### Memory access & Ownership | Rust
+
+```rust
+fn main() {
+    let mut v = vec![];
+    v.push("Hello");
+    let w = &v[0];
+    v.push("world");
+    println!("{} world", w);
+}
+```
+
+```shell
+$ rustc ./hello-borrow.rs && ./hello-borrow
+hello-borrow.rs:5:5: 5:6 error: cannot borrow `v` as mutable because it is also
+  borrowed as immutable
+hello-borrow.rs:5     v.push("world");
+                      ^
+hello-borrow.rs:4:14: 4:15 note: previous borrow of `v` occurs here; the immutable
+  borrow prevents subsequent moves or mutable borrows of `v` until the borrow ends
+hello-borrow.rs:4     let w = &v[0];
+                               ^
+hello-borrow.rs:7:2: 7:2 note: previous borrow ends here
+hello-borrow.rs:1 fn main() {
+...
+hello-borrow.rs:7 }
+                  ^
+```
+
+---
+
+### Concurrency | Rust
+
+```rust
+use std::thread;
+
+fn main() {
+    let guards: Vec<_> = (0..5).map(|_| {
+        thread::scoped(|| {
+            println!("Hello, world!");
+        })
+    }).collect();
+
+    // We do't need to join guards here
+    //  due to nature of thread::scoped.
+    //  It gets auto joined on Drop
+    //guards.into_iter().map(|g| g.join()).collect::<Vec<_>>();
+}
+```
+
+```shell
+$ rustc scoped-hello.rs && ./scoped-hello
+Hello, world!
+Hello, world!
+Hello, world!
+Hello, world!
+Hello, world!
+```
+
+---
+
+### Concurrency | Rust
+
+```rust
+use std::thread;
+
+fn main() {
+    let mut numbers = vec![1, 2, 3];
+    for i in 0..3 {
+        thread::scoped(move || {
+            for j in 0..3 { numbers[j] += 1 }
+        });
+    }
+}
+```
+
+```shell
+borrow.rs:7:29: 7:36 error: capture of moved value: `numbers`
+borrow.rs:7             for j in 0..3 { numbers[j] += 1 }
+                                        ^~~~~~~
+borrow.rs:6:29: 8:10 note: `numbers` moved into closure environment here because
+  it has type `[closure(())]`, which is non-copyable
+borrow.rs:6         thread::scoped(move || {
+borrow.rs:7             for j in 0..3 { numbers[j] += 1 }
+borrow.rs:8         });
+borrow.rs:6:29: 8:10 help: perhaps you meant to use `clone()`?
+borrow.rs:6         thread::scoped(move || {
+borrow.rs:7             for j in 0..3 { numbers[j] += 1 }
+borrow.rs:8         });
+
+```
+
+---
+
+### Concurrency | Rust
+
+```rust
+use std::thread;
+use std::sync::{Arc,Mutex};
+
+fn main() {
+    let numbers = Arc::new(Mutex::new(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+
+    let guards: Vec<_> = (0..10).map (|i| {
+        let number = numbers.clone();
+
+        thread::spawn(move || {
+            let mut array = number.lock().unwrap();
+            array[i] += 1;
+            println!("numbers[{}] is {}", i, array[i]);
+        })
+
+        // the return value is the join handle returned by thread::spawn.
+        // alternatively we could make explicit return here
+    }).collect();
+
+    guards.into_iter().map(|g| g.join()).collect::<Vec<_>>();
+}
+
+```
+
+```shell
+numbers[3] is 5
+...
+```
 
 ---
 class: center, middle, h-shadow
 
 # Rust in action
+
+---
+class: center, middle, h-shadow
+
+# Problems
 
 ---
 layout: false
@@ -649,6 +853,7 @@ http://rustbyexample.com/
 
 #### - Rust for CXX programmers
 https://github.com/rust-lang/rust/wiki/Rust-for-CXX-programmers
+http://www.quora.com/What-do-C-C++-systems-programmers-think-of-Rust
 
 ---
 
@@ -682,22 +887,22 @@ class: center, middle, inverse, h-shadow
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
     <script>
-      //var lngs='arta, ascetic, dark, default, far, github, googlecode, idea, ir_black, magula, monokai, rainbow, solarized_dark, solarized_light, sunburst, tomorrow, tomorrow-night-blue, tomorrow-night-bright, tomorrow-night, tomorrow-night-eighties, vs, zenburn';
-      //var arr = lngs.split(', ');
-      //var k = parseInt(Math.random() * (arr.length + 1));
-      //var slideshow = remark.create({
-      //  highlightLanguage : 'rust',
-      //  highlightStyle : arr[k]
-      //});
-      //console.log(arr[k]);
-      //slideshow.togglePresenterMode();
+      // var lngs='arta, ascetic, dark, default, far, github, googlecode, idea, ir_black, magula, monokai, rainbow, solarized_dark, solarized_light, sunburst, tomorrow, tomorrow-night-blue, tomorrow-night-bright, tomorrow-night, tomorrow-night-eighties, vs, zenburn';
+      // var arr = lngs.split(', ');
+      // var k = parseInt(Math.random() * (arr.length + 1));
+      // var slideshow = remark.create({
+      //   highlightLanguage : 'rust',
+      //   highlightStyle : arr[k],
+      // });
+      // console.log(arr[k]);
+      // slideshow.togglePresenterMode();
 
       var slideshow = remark.create({
         highlightLanguage : 'rust',
-        highlightStyle : 'tomorrow' //arr[k]
+        highlightStyle : 'tomorrow', //arr[k]
       });
       slideshow.togglePresenterMode();
     </script>
   </body>
 </html>
-<!-- vim: set ts=4 sw=2 tw=70 colorcolumn=71: -->
+<!-- vim: set ts=4 sw=4 tw=70 colorcolumn=71: -->

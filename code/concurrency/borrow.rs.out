@@ -1,14 +1,12 @@
-$ rustc borrow.rs
-borrow.rs:8:29: 8:36 error: capture of moved value: `numbers`
-borrow.rs:8             for j in 0..3 { numbers[j] += 1 }
+borrow.rs:7:29: 7:36 error: capture of moved value: `numbers`
+borrow.rs:7             for j in 0..3 { numbers[j] += 1 }
                                         ^~~~~~~
-borrow.rs:7:29: 9:10 note: `numbers` moved into closure environment here because it has type `[closure(())]`, which is non-copyable
-borrow.rs:7         thread::scoped(move || {
-borrow.rs:8             for j in 0..3 { numbers[j] += 1 }
-borrow.rs:9         });
-borrow.rs:7:29: 9:10 help: perhaps you meant to use `clone()`?
-borrow.rs:7         thread::scoped(move || {
-borrow.rs:8             for j in 0..3 { numbers[j] += 1 }
-borrow.rs:9         });
-error: aborting due to previous error
+borrow.rs:6:29: 8:10 note: `numbers` moved into closure environment here because it has type `[closure(())]`, which is non-copyable
+borrow.rs:6         thread::scoped(move || {
+borrow.rs:7             for j in 0..3 { numbers[j] += 1 }
+borrow.rs:8         });
+borrow.rs:6:29: 8:10 help: perhaps you meant to use `clone()`?
+borrow.rs:6         thread::scoped(move || {
+borrow.rs:7             for j in 0..3 { numbers[j] += 1 }
+borrow.rs:8         });
 

@@ -2,7 +2,7 @@ use std::thread;
 
 #[allow(unused_variables)]
 fn main() {
-    let guards: Vec<_> = (0..10).map(|_| {
+    let guards: Vec<_> = (0..5).map(|_| {
         thread::scoped(|| {
             println!("Hello, world!");
         })
