@@ -318,7 +318,7 @@ But! Instead I'm going to concentrate on **Why?** you should give it a
 spin first.
 
 - Why are we here today?
-- Why do we need different tools?
+- Why do we want different tools?
 
 And the answer actually is plain simple. Because we need and deserve
 better.
@@ -408,7 +408,7 @@ using combination of C/C++. I, definitely was complete newbie at that
 point, but it struck me - I was unable to reason about my code base.
 It was too difficult to reason about, it threw all sorts of errors in
 different and unexpected places. And they were undetectable until
-execution, or at least I didn't know how to detect and prevent them.
+execution, or at least I didn't know how to prevent and detect them.
 
 ---
 class: center, middle
@@ -484,6 +484,14 @@ understand, yet not giving safe and convenient enough safety net..
 So, they definitely do their best, but is it realistic to expect it
 any time soon? And could you wait that long?
 
+Most of the big players use C/C++ a lot and feel that pain on daily
+basis, either via vast amount of bug reports, or via slow and tedious
+release cycle, or different.
+
+Some of them do not want to wait that long and loose competitive
+advantage because of that. Some are innovative enough, skilful enough,
+to actually step up and try to break status quo.
+
 ---
 class: medium
 layout: false
@@ -516,8 +524,12 @@ layout: false
 
 ???
 
-And Mozilla couldn't. They are enormous organization with enormously
-large code bases, most of which are in fact C/C++ code bases.
+And Mozilla _definitely_ is one of such market player.  They are
+enormous organization with enormously large code bases, most of which
+are in fact C/C++ code bases, which still tries and delivers
+innovative stuff in short cycles.
+
+_But, they want to be even better!_
 
 Mozilla's Firefox used to have "memory hog" reputation, and also have
 had quite a few instability periods. Lots of them could also be
@@ -551,7 +563,8 @@ class: h-shadow
 
 ???
 
-And Mozilla comes up with new generic programming language, Rust.
+And Mozilla decides to back up new, promising,  low-level, system
+programming language - _Rust_.
 
 The official opening line is:
 - _"Rust is a systems programming language pursuing the trifecta:
@@ -587,9 +600,29 @@ audit.
 
 ## Worldly
 ### - <strike> GC, green threads, stack unwinding</strike>
-### - Minimal, yet disconnectable runtime
+### - Minimal, yet detachable runtime
 ### - C bindings / FFI
 ### - Cross-compile
+
+???
+
+Worldly, or Pragmatic.
+
+One of the finest qualities is not only that _the language is_. I
+would argue, the finest quality is that _the language does not try to
+be_.
+
+Rust is pursuing generic, low-level system level language agenda, and
+there is not place in language core for things like GC, green threads
+or C++/Java type exceptions with stack unwinding.
+
+Ironically enough, all of this _was_ initially included in the
+language, however.. One the things I admire Rust team for, they have
+guts and will to take a step back, take a deeper look, remove the
+noise and start it all over again.
+
+SO, Rust is lightweight, with minimal, detachable core, effective C
+bindings and cross compile capabilities.
 
 ---
 
@@ -597,12 +630,39 @@ audit.
 ### - Zero-cost abstractions
 ### - LLVM type and level of optimizations
 
+???
+
+Rust tries to be as efficient as it could, but not at runtime costs.
+Usually speed and safety come in balance, you get one, you loose the
+other.
+
+But not in the Rust DNA.
+
+Rust defines following guidelines:
+- Memory safety must never be compromised.
+- Abstraction should be zero-cost, while still maintaining safety.
+- Practicality is key.
+
 ---
 
 ## Extensible
 ### - Hygienic macros
 ### - Linters
 ### - Plugins
+
+???
+
+I won't concentrate on this very much, since it's definitely is an
+advance topic.
+
+Generally speaking, Rust allows you to extend syntax, define
+compile-time checked hygienic macroses (no clashes with the the rest
+of code) et cetera.
+
+Few samples:
+- Linters checking your code conforms to best practices
+- Plugins checking SQL queries are valid during compilation time, not
+during execution et cetera.
 
 ---
 
@@ -612,11 +672,22 @@ audit.
 ### - Multi-paradigm: Structs, Traits
 ### - Trait-based generics, Type inference, Pattern matching
 
+???
+
+Rust inheritance, Type system, type inference, coercion, redaction, et
+cetera.
+
+I would like to go in full-length detailed review and analysis here.
+However only this would take the whole time of my presentation.
+
+So, unfortunately, I will limit myself to only brief summary:
+_Read from the slides here_
+
 ---
 
 class: center, middle, h-shadow
 
-# Some code
+## println!("Code time");
 
 ---
 
@@ -852,6 +923,14 @@ class: center, middle, h-shadow
 class: center, middle, h-shadow
 
 # Problems
+
+???
+
+- 1.0 Relese on my BD, on 15th of May
+- Unstable, API still change
+- No large track of use in production, duuh, obviously
+- It takes some time to get used to Rust concepts: borrowing,
+lifetimes etc ...
 
 ---
 
