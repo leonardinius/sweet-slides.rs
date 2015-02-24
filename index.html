@@ -489,7 +489,7 @@ class: medium
 layout: false
 
 .center[
-### Perspective
+### Mozilla strikes back
 ]
 
 .left-column[
@@ -553,7 +553,7 @@ class: h-shadow
 
 And Mozilla comes up with new generic programming language, Rust.
 
-The official punch line is:
+The official opening line is:
 - _"Rust is a systems programming language pursuing the trifecta:
 safe, fast, and concurrent."_
 
@@ -568,8 +568,6 @@ _Read keywords from the slide_
 ### - Typestate system, no null pointers
 ### - Mutability control, immutable by default
 ### - Side-effect control, pure by default
-
-.footnote[*.reference-url[http://www.steveklabnik.com/fosdem2015/]]
 
 ???
 
@@ -591,6 +589,7 @@ audit.
 ### - <strike> GC, green threads, stack unwinding</strike>
 ### - Minimal, yet disconnectable runtime
 ### - C bindings / FFI
+### - Cross-compile
 
 ---
 
@@ -611,7 +610,7 @@ audit.
 
 ### - Not "everything is an object"
 ### - Multi-paradigm: Structs, Traits
-### - Trait-based generics, Type inference,Pattern matching
+### - Trait-based generics, Type inference, Pattern matching
 
 ---
 
@@ -819,6 +818,29 @@ fn main() {
 ```shell
 numbers[3] is 5
 ...
+```
+
+---
+
+### Functional | Rust
+
+```rust
+use std::iter::{count,iterate,MultiplicativeIterator};
+
+fn main() {
+  let fibonacci = iterate((0,1), |e| {(e.1, e.0 + e.1)}).skip(1).map(|e| e.1);
+  let first_10: Vec<_> = fibonacci.take(10).collect();
+  println!("first_10: {:?}", first_10);
+
+  let factorial_10 = count(1, 1).take_while(|&i| i <= 10).product();
+  println!("factorial: {:?}", factorial_10);
+}
+```
+
+```shell
+$ rustc fn.rs && ./fn
+first_10: [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+factorial: 3628800
 ```
 
 ---
