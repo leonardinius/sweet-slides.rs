@@ -21,10 +21,8 @@
         margin-bottom: 0.5em;
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono';}
-      .remark-code-line-highlighted     { background-color: #373832; }
-
       .remark-slide-content h1 { font-size: 6em; }
-      .remark-slide-content h2 { font-size: 4em; }
+      .remark-slide-content h2 { font-size: 3.99em; }
       .remark-slide-content h3 { font-size: 2.6em; }
 
       .remark-slide-content.big-headers h1 { font-size: 9em; }
@@ -38,11 +36,6 @@
       .remark-slide-content.inverse.h-shadow h1,
       .remark-slide-content.inverse.h-shadow h2,
       .remark-slide-content.inverse.h-shadow h3    { text-shadow: 0.1em 0.1em 0.2em black; }
-
-
-      .remark-slide-content.h-why h1,
-      .remark-slide-content.h-why h2,
-      .remark-slide-content.h-why h3    { color: #EECE67; }
 
       .footnote {
         position: absolute;
@@ -65,14 +58,18 @@
         border-left: 0.4em solid #d7d7d7;
         padding-left: 1em !important;
         padding-right: 1em !important;
-        padding-top: 0.2em !important;
-        padding-bottom: 0.2em !important;
+        padding-top: 0.1em !important;
+        padding-bottom: 0.1em !important;
       }
       code {
         -moz-border-radius: 5px;
         -web-border-radius: 5px;
         background: #e7e8e2;
         border-radius: 5px;
+      }
+
+      .remark-code {
+        font-size: 19px;
       }
 
       .pull-left {
@@ -85,13 +82,6 @@
       }
       .pull-right ~ p {
         clear: both;
-      }
-      #slideshow .slide .content code {
-        font-size: 0.8em;
-      }
-      #slideshow .slide .content pre code {
-        font-size: 0.9em;
-        padding: 15px;
       }
       .inverse {
         background: #272822;
@@ -171,23 +161,23 @@
 
       .contest-0{
         position: absolute;
-        left: 3em;
-        top: 3em;
+        left: 2.5em;
+        top: -2em;
       }
       .contest-1{
         position: absolute;
         right: 5em;
-        top: 5em;
+        top: 4em;
       }
       .contest-2{
         position: absolute;
         left: 6em;
-        bottom: 3em;
+        bottom: 6em;
       }
       .contest-4{
         position: absolute;
-        right: 7em;
-        bottom: 4em;
+        right: 8em;
+        bottom: 2em;
       }
 
       .h-last-highlighted h2:last-of-type,
@@ -205,20 +195,15 @@
       .sweet-right-column h2,
       .sweet-right-column h3
       {
-        margin-top: 0.3em;
+        margin-top: 0.0em;
         margin-bottom: 0.3em;
-      }
-      .sweet-right-column {
-        /* float: left;         */
-        /* position: absolute;  */
-        /* left: 17em;          */
       }
       .sweet-right-column h1:nth-child(even),
       .sweet-right-column h2:nth-child(even),
       .sweet-right-column h3:nth-child(even)
       {
         left: 1.2em;
-        top: -0.6em;
+        top: -0.1em;
         position: relative;
       }
       .sweet-right-column h1:nth-child(odd),
@@ -233,8 +218,8 @@
       .sweet-right-column h2:nth-child(1),
       .sweet-right-column h3:nth-child(1)
       {
-        left: 4em;
-        top: -0.1em;
+        left: 3.5em;
+        top: 0.3em;
         position: relative;
       }
       .sweet-center > h1{
@@ -246,14 +231,12 @@
   </style>
     </head>
     <body>
-        <textarea
-           id="source">
+<textarea id="source">
 
-name: Title Page
 class: middle, home
 
 .home-left-column[
-# The Sweet Flavour of Rust
+# The sweet flavour of <u>Rust</u>
 ]
 
 .home-right-column[
@@ -269,11 +252,14 @@ class: middle, home
 
 Hello,
 
-My name is Leonids Maslovs and my talk title is "The Sweet Flavour of
-Rust"
-
-Today I will introduce you into the beautiful and sweet world of Rust
+My name is Leonids Maslovs and today I will introduce you into the beautiful and sweet world of Rust
 programming language.
+
+Quiz:
+- Who have actually seen or tried Rust before?
+- Who have ever heard about Rust before?
+
+So, what's why I'm here today.
 
 ---
 class: about, middle
@@ -301,43 +287,20 @@ At the moment I'm working with GaleoConsulting and my official job
 title is the "Lead technologist".
 
 ---
-class: center, middle, inverse, h-shadow, h-why, big-headers
-background-image:url(./files/evolution-of-programming-languages.jpg)
-
-# Why?
-
-.footnote[*.reference-url[http://xrds.acm.org/images/4833512699_761a3fcc61_b.jpg]]
-
-???
-
-I could fill the whole talk with awesome language concepts,
-cool-looking code snippets and make you want to make sweet love to
-Rust in the end of the talk, because of that.
-
-But! Instead I'm going to concentrate on **Why?** you should give it a
-spin first.
-
-- Why are we here today?
-- Why do we want different tools?
-
-And the answer actually is plain simple. Because we need and deserve
-better.
-
----
 class: middle, big-headers
 background-image: url(files/please-like-me.png)
 
 .contest-0[
-## Python?
+## Javascript?
 ]
 .contest-1[
 ## Java?
 ]
 .contest-2[
-## C#?
+## Ruby?
 ]
 .contest-4[
-## Ruby?
+## Cobol?
 ]
 
 .footnote[*.reference-url[http://datedaily.mate1.com/wp-content/uploads/2013/09/please-like-me.png]]
@@ -389,44 +352,14 @@ professional life? Or during studies?
 - Did you enjoy it?
 
 ---
-class: middle
-
-> ## As far as we know, our computer has never had an undetected error. [Weisert]
-
-
-???
-
-The quote originally is about the particular line of IBM mainframes. I
-know, it's far-stretched..., but.. How many of you had that feeling
-about your code bases?
-
-I don't do any C/C++ application development lately.
-
-However, I distinctively remember the time (during my studies) when I
-tried to add asynchronous file management capabilities to FAR manager
-using combination of C/C++. I, definitely was complete newbie at that
-point, but it struck me - I was unable to reason about my code base.
-It was too difficult to reason about, it threw all sorts of errors in
-different and unexpected places. And they were undetectable until
-execution, or at least I didn't know how to prevent and detect them.
-
----
 class: center, middle
 
-# C/C++ struggles
-
-![xkcd pointers](files/xkcd-pointers.png)
-
-.footnote[*.reference-url[http://xkcd.com/138/]]
-
-???
-
-Which brings us to C/C++ struggles
+# C/C++ struggles?
 
 ---
 class: h-last-highlighted
 
-## - Memory management
+## - Manual memory management
 
 ???
 
@@ -437,7 +370,7 @@ class: h-last-highlighted
 ---
 continued: true
 
-## - Dangling pointers
+## - Evil pointers
 
 ???
 
@@ -447,7 +380,7 @@ after free.
 ---
 continued: true
 
-## - Concurrency models
+## - Weak concurrency models
 
 ???
 
@@ -699,16 +632,15 @@ int main(void)
     char *s = "hello world";
     *s = 'H';
 }
-
 ```
 
 ---
 continued: true
 
 ```shell
-$ make hello && ./hello
-cc     hello.c   -o hello
-[1]    6015 segmentation fault  ./hello
+ $ make hello && ./hello
+ cc     hello.c   -o hello
+* [1]    6015 segmentation fault  ./hello
 
 ```
 
@@ -723,12 +655,15 @@ fn main() {
 }
 ```
 
+---
+continued: true
+
 ```shell
-$ rustc hello.rs
-hello.rs:3:5: 3:13 error: cannot assign to immutable borrowed content `*s`
-hello.rs:3     *s = "H";
-               ^~~~~~~~
-error: aborting due to previous error
+ $ rustc hello.rs
+*hello.rs:3:5: 3:13 error: cannot assign to immutable borrowed content `*s`
+*hello.rs:3     *s = "H";
+*               ^~~~~~~~
+ error: aborting due to previous error
 ```
 
 ---
@@ -757,10 +692,9 @@ int main() {
 continued:true
 
 ```shell
-$ make hello && ./hello
-g++     hello.cpp   -o hello
-[1]    8923 segmentation fault  ./hello
-
+ $ make hello && ./hello
+ g++     hello.cpp   -o hello
+*[1]    8923 segmentation fault  ./hello
 ```
 
 ---
@@ -769,29 +703,35 @@ g++     hello.cpp   -o hello
 
 ```rust
 fn main() {
-    let mut v = vec![];
-    v.push("Hello");
+    let mut v = vec!["Hello"];
+
     let w = &v[0];
+
     v.push("world");
+
     println!("{} world", w);
 }
 ```
 
+---
+continued: true
+
 ```shell
-$ rustc ./hello-borrow.rs && ./hello-borrow
-hello-borrow.rs:5:5: 5:6 error: cannot borrow `v` as mutable because it is also
-  borrowed as immutable
-hello-borrow.rs:5     v.push("world");
-                      ^
-hello-borrow.rs:4:14: 4:15 note: previous borrow of `v` occurs here; the immutable
-  borrow prevents subsequent moves or mutable borrows of `v` until the borrow ends
-hello-borrow.rs:4     let w = &v[0];
-                               ^
-hello-borrow.rs:7:2: 7:2 note: previous borrow ends here
-hello-borrow.rs:1 fn main() {
-...
-hello-borrow.rs:7 }
-                  ^
+ $ rustc hello-borrow.rs
+*hello-borrow.rs:6:5: 6:6 error: cannot borrow `v` as mutable because
+*  it is also borrowed as immutable
+*hello-borrow.rs:6     v.push("world");
+*                      ^
+*hello-borrow.rs:4:14: 4:15 note: previous borrow of `v` occurs here;
+*  the immutable borrow prevents subsequent moves or mutable borrows of
+*  `v` until the borrow ends
+*hello-borrow.rs:4     let w = &v[0];
+*                               ^
+*hello-borrow.rs:9:2: 9:2 note: previous borrow ends here
+*hello-borrow.rs:1 fn main() {
+*...
+*hello-borrow.rs:9 }
+*                  ^
 ```
 
 ---
@@ -802,26 +742,24 @@ hello-borrow.rs:7 }
 use std::thread;
 
 fn main() {
-    let guards: Vec<_> = (0..5).map(|_| {
+    for _ in 0..5 {
         thread::scoped(|| {
             println!("Hello, world!");
-        })
-    }).collect();
-
-    // We do't need to join guards here
-    //  due to nature of thread::scoped.
-    //  It gets auto joined on Drop
-    //guards.into_iter().map(|g| g.join()).collect::<Vec<_>>();
+        });
+    };
 }
 ```
 
+---
+continued: true
+
 ```shell
-$ rustc scoped-hello.rs && ./scoped-hello
-Hello, world!
-Hello, world!
-Hello, world!
-Hello, world!
-Hello, world!
+ $ rustc scoped-hello.rs && ./scoped-hello
+*Hello, world!
+*Hello, world!
+*Hello, world!
+*Hello, world!
+*Hello, world!
 ```
 
 ---
@@ -829,32 +767,34 @@ Hello, world!
 ### Concurrency | Rust
 
 ```rust
-use std::thread;
-
 fn main() {
     let mut numbers = vec![1, 2, 3];
+
     for i in 0..3 {
-        thread::scoped(move || {
+        std::thread::scoped(move || {
             for j in 0..3 { numbers[j] += 1 }
         });
     }
 }
 ```
 
-```shell
-borrow.rs:7:29: 7:36 error: capture of moved value: `numbers`
-borrow.rs:7             for j in 0..3 { numbers[j] += 1 }
-                                        ^~~~~~~
-borrow.rs:6:29: 8:10 note: `numbers` moved into closure environment here because
-  it has type `[closure(())]`, which is non-copyable
-borrow.rs:6         thread::scoped(move || {
-borrow.rs:7             for j in 0..3 { numbers[j] += 1 }
-borrow.rs:8         });
-borrow.rs:6:29: 8:10 help: perhaps you meant to use `clone()`?
-borrow.rs:6         thread::scoped(move || {
-borrow.rs:7             for j in 0..3 { numbers[j] += 1 }
-borrow.rs:8         });
+---
+continued: true
 
+```shell
+ $ rustc borrow.rs
+*borrow.rs:6:29: 6:36 error: capture of moved value: `numbers`
+*borrow.rs:6             for j in 0..3 { numbers[j] += 1 }
+*                                        ^~~~~~~
+*borrow.rs:5:34: 7:10 note: `numbers` moved into closure environment
+*  here because it has type `[closure(())]`, which is non-copyable
+*borrow.rs:5         std::thread::scoped(move || {
+*borrow.rs:6             for j in 0..3 { numbers[j] += 1 }
+*borrow.rs:7         });
+*borrow.rs:5:34: 7:10 help: perhaps you meant to use `clone()`?
+*borrow.rs:5         std::thread::scoped(move || {
+*borrow.rs:6             for j in 0..3 { numbers[j] += 1 }
+*borrow.rs:7         });
 ```
 
 ---
@@ -866,29 +806,32 @@ use std::thread;
 use std::sync::{Arc,Mutex};
 
 fn main() {
-    let numbers = Arc::new(Mutex::new(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+    let state = Arc::new(Mutex::new( (0,vec![0;5]) ));
 
-    let guards: Vec<_> = (0..10).map (|i| {
-        let number = numbers.clone();
-
+    let handles: Vec<_> = (0..5).map(|i| {
+        let mutex = state.clone();
         thread::spawn(move || {
-            let mut array = number.lock().unwrap();
-            array[i] += 1;
-            println!("numbers[{}] is {}", i, array[i]);
+            let mut data = mutex.lock().unwrap();
+            data.0 += 1; data.1[i] += data.0;
         })
-
-        // the return value is the join handle returned by thread::spawn.
-        // alternatively we could make explicit return here
     }).collect();
 
-    guards.into_iter().map(|g| g.join()).collect::<Vec<_>>();
-}
+    handles.into_iter().map(|g| g.join()).collect::<Vec<_>>();
 
+    println!("{:?}", state.lock().unwrap().1);
+}
 ```
 
+---
+continued: true
+
 ```shell
-numbers[3] is 5
-...
+
+ $ rustc mutate.rs && ./mutate && ./mutate && ./mutate
+*[3, 1, 2, 5, 4]
+*[1, 2, 4, 3, 5]
+*[1, 2, 4, 5, 3]
+
 ```
 
 ---
@@ -896,28 +839,27 @@ numbers[3] is 5
 ### Functional | Rust
 
 ```rust
-use std::iter::{count,iterate,MultiplicativeIterator};
+use std::iter::iterate;
 
 fn main() {
-  let fibonacci = iterate((0,1), |e| {(e.1, e.0 + e.1)}).skip(1).map(|e| e.1);
-  let first_10: Vec<_> = fibonacci.take(10).collect();
-  println!("first_10: {:?}", first_10);
+  let fibonacci_seq =
+      iterate( (0u64, 1u64), |e| {(e.1, e.0 + e.1)} )
+        .skip(1)
+        .map(|e| e.1);
 
-  let factorial_10 = count(1, 1).take_while(|&i| i <= 10).product();
-  println!("factorial: {:?}", factorial_10);
+  let numbers: Vec<_> = fibonacci_seq.take(10).collect();
+
+  println!("{:?}", numbers);
 }
 ```
 
+---
+continued: true
+
 ```shell
 $ rustc fn.rs && ./fn
-first_10: [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
-factorial: 3628800
+*[1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
 ```
-
----
-class: center, middle, h-shadow
-
-# Rust in action
 
 ---
 class: center, middle, h-shadow
@@ -977,7 +919,7 @@ class: center, middle, inverse, h-shadow
 
 # Thank you
 
-    </textarea>
+</textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
     <script>
@@ -989,14 +931,11 @@ class: center, middle, inverse, h-shadow
       //   highlightStyle : arr[k],
       // });
       // console.log(arr[k]);
-      // slideshow.togglePresenterMode();
 
       var slideshow = remark.create({
         highlightLanguage : 'rust',
-        highlightStyle : 'tomorrow', //arr[k]
+        highlightStyle : 'solarized_light',
       });
-
-      //slideshow.togglePresenterMode();
     </script>
   </body>
 </html>
