@@ -1,4 +1,5 @@
 $ rustc fn.rs && ./fn
-first_10: [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
-factorial: 3628800
-
+First 10 fibonacci numbers are:
+        [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+Product is:
+        10904493600
