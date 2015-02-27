@@ -320,29 +320,32 @@ background-image: url(files/please-like-me.png)
 ???
 Does it look any familiar? It certainly does to me.
 
-Let's make a little quiz here. What is the most popular programming
-language here, in this room? Please raise your hands if you ever used
-that language. Professionally, or during studies...
+Let's make a quick poll here.
 
-- Python?
-- Java? (forest of hands, hopefully)
-- C#?
-- Any web-hipster Ruby fans out there?
-- Something else?
+- Please raise your hands if you think Javascript is the most popular
+language in the world and will eat the world?
+  Forest of hands
+- Java?
+  Quite a lot
+- Ruby?
+  Few, but still
+- Could not decide between Lisp and Clojure?
+- Grandpa Cobol?
+  No one, really. Why so? / O, one crazy guy from mainframe support
+ team.
 
 And what language is the most popular in world, outside of this room?
 What do you think?
 - Is it the one we use to develop online web-shops?
 - Or develop new set of Big Data crunching reports?
-- Or the one our smartphone games are programmed with?
 
 We are not talking about the most trending programming language on the
 Github front page, or the hottest job advertisement in Silicon Valley
 (it's Scala, everybody knows it. But shhhh..., you haven't heard it
 from me).
 
-We are talking about the code most of the programmer population works
-with on daily basis.
+We are talking about the code most of our kind, the programmer
+vulgaris, work with on daily basis.
 
 ---
 class: center, middle, big-headers,h-shadow
@@ -350,23 +353,43 @@ class: center, middle, big-headers,h-shadow
 # C/C++
 
 ???
-It's C/C++ and you know it.
+It's C/C++ and you know it. Surprise, surprise.
 
-It has long, interesting and productive history, with billions and
-billions lines of code running on billions and billions devices out
-there.
+It's _literally_, billions and billions lines of code running on
+billions and billions devices out there.
+
+It's running your bank systems, it your smartphone, it runs in your
+car, your aircraft and nearby nuclear power station.
+
+It's almost everywhere to some extent or another.
 
 - How many of you had first hand experience with C or C++ in your
-professional life? Or during studies?
-
-- Please raise your hands.
-
+professional life? Please raise your hands.
 - Did you enjoy it?
+- Was it painful?
+
+It certainly was to me. I specifically remember the pain and
+helplessness during my early experiments with C/C++. I was developing
+FAR Manager plugin with asynchronous file copy/move capabilities. And
+it struck me. At some point I was unable to reason about my code, it
+behaved unpredictably and would fail randomly. I guess, I might have
+found some tools, e.g. valgrind, which would enlighten me, but it was
+too advanced/unfamiliar to me at the time.
+
+_pause_
 
 ---
 class: center, middle
 
 # C/C++ struggles?
+
+???
+
+Which brings us to C++ problems.
+
+- So, what's wrong with C/C++?
+- Anyone?
+- Let's see if I have you covered.
 
 ---
 class: h-last-highlighted
@@ -377,7 +400,8 @@ class: h-last-highlighted
 
 - Necessity to manually allocate and free all resources.
 
-  **Problems:** Double frees, memory leaks.
+  **Problems:** Manual and tedious process of manual resource
+  allocation, inevitable mistakes, memory leaks and double frees.
 
 ---
 continued: true
@@ -386,8 +410,10 @@ continued: true
 
 ???
 
-- **Problems:** Uninitialized pointers, NULL pointer dereference, use
-after free.
+- C/C++ force you do manual pointer arithmetics,
+combined with manual memory allocation and type system we get:
+  **Problems:** dangling pointers, NULL pointer dereference, use after
+  free.
 
 ---
 continued: true
@@ -404,6 +430,9 @@ production.
 
   **Problems:** race conditions, deadlocks.
 
+  Remember, the best way to fix production problem - is to prevent it
+  from happening in the first place.
+
 ---
 class: center
 
@@ -417,21 +446,21 @@ class: center
 
 ???
 
-Hold on a second. What about C++11/14 standards? Don't they do all
-possible to address those issues?
+Some of you will tell - "Hold on a second. What about C++11/14
+standards? Don't they do all possible to address those issues?"
 
 C/C++ has the advantage of billions lines of existing and working
-source code out there, but it also means the backward compatibility
-will always drag it in, the only way of addressing those issues is to
-extend languages, making them more complex, more difficult to
-understand, yet not giving safe and convenient enough safety net..
+source code out there, but it also means the backward compatibility is
+a MUST. The only way of moving forward is to extend language, making
+it more complex, more difficult to understand, yet not solving
+existing solutions completely, adding safety nets around them..
 
 So, they definitely do their best, but is it realistic to expect it
 any time soon? And could you wait that long?
 
 Most of the big players use C/C++ a lot and feel that pain on daily
 basis, either via vast amount of bug reports, or via slow and tedious
-release cycle, or different.
+release cycle.
 
 Some of them do not want to wait that long and loose competitive
 advantage because of that. Some are innovative enough, skilful enough,
@@ -469,27 +498,24 @@ layout: false
 
 ???
 
-And Mozilla _definitely_ is one of such market player.  They are
-enormous organization with enormously large code bases, most of which
-are in fact C/C++ code bases, which still tries and delivers
-innovative stuff in short cycles.
+And Mozilla strikes back.
+
+Mozilla _definitely_ is one of such market player.  They are enormous
+organization with enormously large code bases, most of which are in
+fact C/C++ code bases, which still tries and delivers innovative stuff
+in short cycles.
 
 _But, they want to be even better!_
 
-Mozilla's Firefox used to have "memory hog" reputation, and also have
-had quite a few instability periods. Lots of them could also be
-attributed to the fact that large code bases are difficult to reason
-about, especially if they are C/C++ code bases.
+Let's not forget that Mozilla develops solutions (e.g. browser,
+Firefox OS, et cetera) running on mobile platforms and is also aiming
+at emerging Internet of Things market.
 
-Let's not forget that Mozilla develops resource saving/frugal
-solutions. They are: browsers (Firefox), platforms (Firefox OS).
-Those solutions are highly sensitive on resources spending, especially
-on mobile, where the battery life is major concern.
+It's niche of the low-level, system programming languages.
 
-So, your average scripting language (Python) or web-scale application
-development languages (Java, .Net) are not an option.
+Because battery life, every bit and every CPU cycle matters.
 
-So, Mozilla definitely felt the pain and acted upon it.
+_pause_
 
 ---
 class: h-shadow
@@ -511,7 +537,7 @@ class: h-shadow
 And Mozilla decides to back up new, promising,  low-level, system
 programming language - _Rust_.
 
-The official opening line is:
+And while the official opening line is:
 - _"Rust is a systems programming language pursuing the trifecta:
 safe, fast, and concurrent."_
 
@@ -535,11 +561,11 @@ On _NULL pointers_:
 - We don't want that in our code, we don't want to repeat the same
 mistakes all over again.
 
-On _Side-effect control_:
-- You can break the rules
-- You have to authorize _where_ and _how_
-- In _a standard way_, that's integrated into the language and easy to
-audit.
+So, Rust team went different way: ...
+
+The compiler will do all possible and even more to save you from both
+errors and from yourself. You still could break the rules if you want
+it, but you have to do it intentionally and explicitly.
 
 ---
 
@@ -547,7 +573,7 @@ audit.
 ### - <strike> GC, green threads, stack unwinding</strike>
 ### - Minimal, yet detachable runtime
 ### - C bindings / FFI
-### - Cross-compile
+### - Cross compile
 
 ???
 
@@ -566,8 +592,12 @@ language, however.. One the things I admire Rust team for, they have
 guts and will to take a step back, take a deeper look, remove the
 noise and start it all over again.
 
-SO, Rust is lightweight, with minimal, detachable core, effective C
+So, what the Rust is then?
+
+Rust is lightweight, with minimal, detachable core, effective C
 bindings and cross compile capabilities.
+
+Remember, every bit and every CPU cycle matters.
 
 ---
 
@@ -577,16 +607,23 @@ bindings and cross compile capabilities.
 
 ???
 
-Rust tries to be as efficient as it could, but not at runtime costs.
-Usually speed and safety come in balance, you get one, you loose the
-other.
+Usually speed and safety come in balance. You get one, you loose the
+other. You either do check array bound in runtime (and loose speed),
+or you do not (and loose safety). With C++ you get double edged sword
+and more freedom/options to choose from: but in the end of the day you
+always risk to cut your arm or chop your leg off.
 
-But not in the Rust DNA.
+But not Rust.
 
-Rust defines following guidelines:
+Rust team takes different road:
 - Memory safety must never be compromised.
 - Abstraction should be zero-cost, while still maintaining safety.
 - Practicality is key.
+
+They found a way to enforce safety during compile time, to stay both
+safe and efficient.
+
+You don't have to compromise and can keep your limbs attached.
 
 ---
 
@@ -597,17 +634,21 @@ Rust defines following guidelines:
 
 ???
 
-I won't concentrate on this very much, since it's definitely is an
-advance topic.
+It's an advance topic and I will cover it very briefly.
 
-Generally speaking, Rust allows you to extend syntax, define
-compile-time checked hygienic macroses (no clashes with the the rest
-of code) et cetera.
+Rust allows you to extend syntax, define compile-time checked hygienic
+macroses (no clashes with the rest of code) et cetera.
 
 Few samples:
 - Linters checking your code conforms to best practices
-- Plugins checking SQL queries are valid during compilation time, not
+- Macroses checking SQL queries are valid during compilation time, not
 during execution et cetera.
+- Plugins integrating your DSLs with compiler.
+
+Basically, Rust is giving you best things of Lisp / Groovy /
+Javascript and still staying low-level, system programming language.
+
+You can have your cake and eat it too.
 
 ---
 
@@ -619,14 +660,18 @@ during execution et cetera.
 
 ???
 
-Rust inheritance, Type system, type inference, coercion, redaction, et
-cetera.
+Rust is "close to metal", "Not everything is an object" programming
+language. Still, it features rich Type system, starting from simpler
+slices, tuples, structs, up to Typed enums and Trait based
+inheritance.
 
-I would like to go in full-length detailed review and analysis here.
-However only this would take the whole time of my presentation.
+But not only that, it also gives you some bells and whistles in the
+form of type inference, trait-based generics and pattern matching.
 
-So, unfortunately, I will limit myself to only brief summary:
-_Read from the slides here_
+It's system, it's low level. It doesn't mean it should be inconvenient
+and hard to deal with.
+
+_pause_
 
 ---
 
