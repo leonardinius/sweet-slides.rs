@@ -1,0 +1,7 @@
+g++ -std=c++11 -pthread cx11.cpp -o cx11
+λ ~/ ./cx11
+Hello, World
+Hello, World
+Hello, World
+Hello, World
+Hello, World

@@ -1,0 +1,7 @@
+$ g++ simple.cpp -lpthread -o simple
+$ ./simple
+Hello, world
+Hello, world
+Hello, world
+Hello, world
+Hello, world
