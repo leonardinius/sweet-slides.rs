@@ -1,12 +1,12 @@
-$ rustc hello-borrow.rs && ./hello-borrow
-hello-borrow.rs:6:5: 6:6 error: cannot borrow `v` as mutable because it is also borrowed as immutable
-hello-borrow.rs:6     v.push("world");
-                      ^
-hello-borrow.rs:4:14: 4:15 note: previous borrow of `v` occurs here; the immutable borrow prevents subsequent moves or mutable borrows of `v` until the borrow ends
-hello-borrow.rs:4     let w = &v[0];
-                               ^
-hello-borrow.rs:9:2: 9:2 note: previous borrow ends here
-hello-borrow.rs:1 fn main() {
-...
-hello-borrow.rs:9 }
+v-borrow.rs:8:5: 8:6 error: cannot borrow `v` as mutable because it is also borrowed as immutable
+v-borrow.rs:8     v.push("world");
                   ^
+v-borrow.rs:6:14: 6:15 note: previous borrow of `v` occurs here; the immutable borrow prevents subsequent moves or mutable borrows of `v` until the borrow ends
+v-borrow.rs:6     let w = &v[0];
+                           ^
+v-borrow.rs:11:2: 11:2 note: previous borrow ends here
+v-borrow.rs:1 fn main() {
+...
+v-borrow.rs:11 }
+               ^
+error: aborting due to previous error

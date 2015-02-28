@@ -1,5 +1,7 @@
 fn main() {
-    let mut v = vec!["Hello"];
+    let mut v = vec![];
+
+    v.push("Hello");
 
     let w = &v[0];
 

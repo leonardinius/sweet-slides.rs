@@ -54,22 +54,22 @@
         color: rgb(249, 38, 114);
         text-decoration: none;
       }
+
       pre {
-        border-left: 0.4em solid #d7d7d7;
-        padding-left: 1em !important;
-        padding-right: 1em !important;
+        border-left: 0.1em solid #d7d7d7;
+        padding-left: 0.1em !important;
         padding-top: 0.1em !important;
         padding-bottom: 0.1em !important;
       }
+
       code {
         -moz-border-radius: 5px;
         -web-border-radius: 5px;
         background: #e7e8e2;
         border-radius: 5px;
       }
-
       .remark-code {
-        font-size: 19px;
+        font-size: 22px;
       }
 
       .pull-left {
@@ -674,8 +674,7 @@ class: center, middle, h-shadow
 ## println!("Code time");
 
 ---
-
-### Memory access & Ownership | C
+class: middle
 
 ```C
 int main(void)
@@ -686,18 +685,17 @@ int main(void)
 ```
 
 ---
-continued: true
+class: middle
 
-```shell
- $ make hello && ./hello
- cc     hello.c   -o hello
-* [1]    6015 segmentation fault  ./hello
+```
+$ make hello && ./hello
+cc     hello.c   -o hello
+*[1]    6015 segmentation fault  ./hello
 
 ```
 
 ---
-
-### Memory access & Ownership | Rust
+class: middle
 
 ```rust
 fn main() {
@@ -707,21 +705,21 @@ fn main() {
 ```
 
 ---
-continued: true
+class: middle
 
-```shell
- $ rustc hello.rs
-*hello.rs:3:5: 3:13 error: cannot assign to immutable borrowed content `*s`
+```
+$ rustc hello.rs
+*hello.rs:3:5: 3:13 error: cannot assign to immutable borrowed
+* content '*s'
 *hello.rs:3     *s = "H";
 *               ^~~~~~~~
- error: aborting due to previous error
+error: aborting due to previous error
 ```
 
 ---
+class: middle
 
-### Memory access & Ownership | C++
-
-```
+```cpp
 #include<iostream>
 #include<vector>
 #include<string>
@@ -740,21 +738,22 @@ int main() {
 ```
 
 ---
-continued:true
+class: middle
 
-```shell
- $ make hello && ./hello
- g++     hello.cpp   -o hello
+```
+$ make hello && ./hello
+g++     hello.cpp   -o hello
 *[1]    8923 segmentation fault  ./hello
 ```
 
 ---
-
-### Memory access & Ownership | Rust
+class: middle
 
 ```rust
 fn main() {
-    let mut v = vec!["Hello"];
+    let mut v = vec![];
+
+    v.push("Hello");
 
     let w = &v[0];
 
@@ -765,29 +764,29 @@ fn main() {
 ```
 
 ---
-continued: true
+class: middle
 
-```shell
- $ rustc hello-borrow.rs
-*hello-borrow.rs:6:5: 6:6 error: cannot borrow `v` as mutable because
-*  it is also borrowed as immutable
-*hello-borrow.rs:6     v.push("world");
-*                      ^
-*hello-borrow.rs:4:14: 4:15 note: previous borrow of `v` occurs here;
-*  the immutable borrow prevents subsequent moves or mutable borrows of
-*  `v` until the borrow ends
-*hello-borrow.rs:4     let w = &v[0];
-*                               ^
-*hello-borrow.rs:9:2: 9:2 note: previous borrow ends here
-*hello-borrow.rs:1 fn main() {
-*...
-*hello-borrow.rs:9 }
-*                  ^
+
 ```
-
+$ rustc v-borrow.rs
+*v-borrow.rs:8:5: 8:6 error: cannot borrow 'v' as mutable because it
+*           is also borrowed as immutable
+*v-borrow.rs:8     v.push("world");
+*                 ^
+*v-borrow.rs:6:14: 6:15 note: previous borrow of 'v' occurs here;
+*           the immutable borrow prevents subsequent moves or
+*           mutable borrows of 'v' until the borrow ends
+*v-borrow.rs:6     let w = &v[0];
+*                          ^
+*v-borrow.rs:11:2: 11:2 note: previous borrow ends here
+*v-borrow.rs:1  fn main() {
+*...
+*v-borrow.rs:11 }
+*              ^
+error: aborting due to previous error
+```
 ---
-
-### Concurrency | Rust
+class: middle
 
 ```rust
 use std::thread;
@@ -802,10 +801,10 @@ fn main() {
 ```
 
 ---
-continued: true
+class: middle
 
-```shell
- $ rustc scoped-hello.rs && ./scoped-hello
+```
+$ rustc scoped-hello.rs && ./scoped-hello
 *Hello, world!
 *Hello, world!
 *Hello, world!
@@ -814,8 +813,7 @@ continued: true
 ```
 
 ---
-
-### Concurrency | Rust
+class: middle
 
 ```rust
 fn main() {
@@ -830,27 +828,26 @@ fn main() {
 ```
 
 ---
-continued: true
+class: middle
 
-```shell
- $ rustc borrow.rs
-*borrow.rs:6:29: 6:36 error: capture of moved value: `numbers`
+```
+$ rustc borrow.rs
+*borrow.rs:6:29: 6:36 error: capture of moved value: 'numbers'
 *borrow.rs:6             for j in 0..3 { numbers[j] += 1 }
 *                                        ^~~~~~~
-*borrow.rs:5:34: 7:10 note: `numbers` moved into closure environment
-*  here because it has type `[closure(())]`, which is non-copyable
+*borrow.rs:5:34: 7:10 note: 'numbers' moved into closure environment
+*  here because it has type '[closure(())]', which is non-copyable
 *borrow.rs:5         std::thread::scoped(move || {
 *borrow.rs:6             for j in 0..3 { numbers[j] += 1 }
 *borrow.rs:7         });
-*borrow.rs:5:34: 7:10 help: perhaps you meant to use `clone()`?
+*borrow.rs:5:34: 7:10 help: perhaps you meant to use 'clone()'?
 *borrow.rs:5         std::thread::scoped(move || {
 *borrow.rs:6             for j in 0..3 { numbers[j] += 1 }
 *borrow.rs:7         });
 ```
 
 ---
-
-### Concurrency | Rust
+class: middle
 
 ```rust
 use std::thread;
@@ -867,27 +864,26 @@ fn main() {
         })
     }).collect();
 
-    handles.into_iter().map(|g| g.join()).collect::<Vec<_>>();
+    handles.into_iter()
+        .map(|g| g.join())
+        .collect::<Vec<_>>();
 
     println!("{:?}", state.lock().unwrap().1);
 }
 ```
 
 ---
-continued: true
+class: middle
 
-```shell
-
- $ rustc mutate.rs && ./mutate && ./mutate && ./mutate
+```
+$ rustc mutate.rs && ./mutate && ./mutate && ./mutate
 *[3, 1, 2, 5, 4]
 *[1, 2, 4, 3, 5]
 *[1, 2, 4, 5, 3]
-
 ```
 
 ---
-
-### Functional | Rust
+class: middle
 
 ```rust
 use std::iter::iterate;
@@ -905,9 +901,9 @@ fn main() {
 ```
 
 ---
-continued: true
+class: middle
 
-```shell
+```
 $ rustc fn.rs && ./fn
 *[1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
 ```
@@ -984,7 +980,8 @@ class: center, middle, inverse, h-shadow
       // console.log(arr[k]);
 
       var slideshow = remark.create({
-        highlightLanguage : 'rust',
+        // disables magic, forces read from definmition
+        highlightLanguage : '',
         highlightStyle : 'solarized_light',
       });
     </script>
