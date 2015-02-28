@@ -1,4 +1,3 @@
-# intro-ppt.rs
-Rust intro ppt
+Sweet flavour of Rust presentation.
 
-Draft (yet) version of Rust intro presentation.
+Prepared for http://latcraft.lv/
