@@ -1,22 +1,21 @@
-#include <iostream>
 #include <thread>
+#include <iostream>
+#include <vector>
 
-void call_from_thread() {
-    std::cout << "Hello, World" << std::endl;
+void hello(){
+    std::cout << "Hello, world" << std::endl;
 }
 
-int main() {
-    //Launch a thread
-    std::thread t[5];
+int main(){
+    std::vector<std::thread> threads;
 
-    for(int i = 0; i < 5; i++){
-      t[i] = std::thread(call_from_thread);
+    for(int i = 0; i < 5; ++i){
+        threads.push_back(std::thread(hello));
     }
 
-    for(int i = 0; i < 5; i++){
-      t[i].join();
+    for(auto& thread : threads){
+        thread.join();
     }
 
     return 0;
 }
-
