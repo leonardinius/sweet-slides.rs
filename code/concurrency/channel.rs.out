@@ -1,0 +1,2 @@
+$ rustc channel.rs && ./channel
+Ok(10)
