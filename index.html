@@ -72,6 +72,10 @@
         font-size: 22px;
       }
 
+      .remark-slide-content.small-code code {
+        font-size: 12px;
+      }
+
       .pull-left {
         float: left;
         width: 47%;
@@ -666,6 +670,11 @@ class: center, middle, h-shadow
 ## println!("Code time");
 
 ---
+class: middle, center
+
+## Safe
+
+---
 class: middle
 
 ```C
@@ -777,6 +786,12 @@ $ rustc v-borrow.rs
 *              ^
 error: aborting due to previous error
 ```
+
+---
+class: middle, center
+
+## Concurrent
+
 ---
 class: middle
 
@@ -805,37 +820,80 @@ $ rustc scoped-hello.rs && ./scoped-hello
 ```
 
 ---
-class: middle
+class: middle, small-code
 
-```rust
-fn main() {
-    let mut numbers = vec![1, 2, 3];
+```cpp
+#include <iostream>
+#include <cstdlib>
+#include <pthread.h>
 
-    for i in 0..3 {
-        std::thread::scoped(move || {
-            for j in 0..3 { numbers[j] += 1 }
-        });
-    }
+using namespace std;
+
+#define NUM_THREADS     5
+
+struct thread_data{
+   int  thread_id;
+   const char *message;
+};
+
+void *PrintHello(void *threadarg)
+{
+   struct thread_data *my_data;
+
+   my_data = (struct thread_data *) threadarg;
+
+   cout << my_data->message << endl;
+
+   pthread_exit(NULL);
+}
+
+int main ()
+{
+   pthread_t threads[NUM_THREADS];
+   struct thread_data td[NUM_THREADS];
+   int rc;
+   int i;
+
+   for( i=0; i < NUM_THREADS; i++ ){
+      td[i].thread_id = i;
+      td[i].message = "Hello, world";
+      rc = pthread_create(&threads[i], NULL,
+                          PrintHello, (void *)&td[i]);
+      if (rc){
+         cout << "Error:unable to create thread," << rc << endl;
+         exit(-1);
+      }
+   }
+   pthread_exit(NULL);
 }
 ```
 
 ---
-class: middle
 
-```
-$ rustc borrow.rs
-*borrow.rs:6:29: 6:36 error: capture of moved value: 'numbers'
-*borrow.rs:6             for j in 0..3 { numbers[j] += 1 }
-*                                        ^~~~~~~
-*borrow.rs:5:34: 7:10 note: 'numbers' moved into closure environment
-*  here because it has type '[closure(())]', which is non-copyable
-*borrow.rs:5         std::thread::scoped(move || {
-*borrow.rs:6             for j in 0..3 { numbers[j] += 1 }
-*borrow.rs:7         });
-*borrow.rs:5:34: 7:10 help: perhaps you meant to use 'clone()'?
-*borrow.rs:5         std::thread::scoped(move || {
-*borrow.rs:6             for j in 0..3 { numbers[j] += 1 }
-*borrow.rs:7         });
+### cx11++ Only
+
+```cpp
+#include <iostream>
+#include <thread>
+
+void call_from_thread() {
+    std::cout << "Hello, World" << std::endl;
+}
+
+int main() {
+    //Launch a thread
+    std::thread t[5];
+
+    for(int i = 0; i < 5; i++){
+        t[i] = std::thread(call_from_thread);
+    }
+
+    for(int i = 0; i < 5; i++){
+        t[i].join();
+    }
+
+    return 0;
+}
 ```
 
 ---
@@ -873,6 +931,11 @@ $ rustc mutate.rs && ./mutate && ./mutate && ./mutate
 *[1, 2, 4, 3, 5]
 *[1, 2, 4, 5, 3]
 ```
+
+---
+class: middle, center
+
+## Functional
 
 ---
 class: middle
