@@ -670,9 +670,9 @@ class: center, middle, h-shadow
 ## println!("Code time");
 
 ---
-class: middle, center
+class: center, middle
 
-## Safe
+## Safety
 
 ---
 class: middle
@@ -788,9 +788,9 @@ error: aborting due to previous error
 ```
 
 ---
-class: middle, center
+class: center, middle
 
-## Concurrent
+## Concurrency
 
 ---
 class: middle
@@ -805,18 +805,6 @@ fn main() {
         });
     };
 }
-```
-
----
-class: middle
-
-```
-$ rustc scoped-hello.rs && ./scoped-hello
-*Hello, world!
-*Hello, world!
-*Hello, world!
-*Hello, world!
-*Hello, world!
 ```
 
 ---
@@ -870,26 +858,26 @@ int main ()
 
 ---
 
-### cx11++ Only
+### C++11 only
 
 ```cpp
-#include <iostream>
 #include <thread>
+#include <iostream>
+#include <vector>
 
-void call_from_thread() {
-    std::cout << "Hello, World" << std::endl;
+void hello(){
+    std::cout << "Hello, world" << std::endl;
 }
 
-int main() {
-    //Launch a thread
-    std::thread t[5];
+int main(){
+    std::vector<std::thread> threads;
 
     for(int i = 0; i < 5; i++){
-        t[i] = std::thread(call_from_thread);
+        threads.push_back(std::thread(hello));
     }
 
-    for(int i = 0; i < 5; i++){
-        t[i].join();
+    for(auto& thread : threads){
+        thread.join();
     }
 
     return 0;
@@ -901,24 +889,38 @@ class: middle
 
 ```rust
 use std::thread;
-use std::sync::{Arc,Mutex};
+use std::sync::mpsc;
+use std::sync::mpsc::*;
 
 fn main() {
-    let state = Arc::new(Mutex::new( (0,vec![0;5]) ));
+    let (tx, rx): (Sender<i32>, Receiver<i32>) = mpsc::channel();
 
-    let handles: Vec<_> = (0..5).map(|i| {
-        let mutex = state.clone();
-        thread::spawn(move || {
-            let mut data = mutex.lock().unwrap();
-            data.0 += 1; data.1[i] += data.0;
-        })
-    }).collect();
+    let thread_tx = tx.clone();
+    thread::spawn(move || {
+        thread_tx.send(10).ok().expect("Unable to send message");
+    });
 
-    handles.into_iter()
-        .map(|g| g.join())
-        .collect::<Vec<_>>();
+    println!("{:?}", rx.recv());
+}
+```
 
-    println!("{:?}", state.lock().unwrap().1);
+---
+class: center, middle
+
+## Safety & Concurrency
+
+---
+class: middle
+
+```rust
+fn main() {
+    let mut numbers = vec![1, 2, 3];
+
+    for _ in 0..3 {
+        std::thread::scoped(move || {
+            for j in 0..3 { numbers[j] += 1 }
+        });
+    }
 }
 ```
 
@@ -926,16 +928,44 @@ fn main() {
 class: middle
 
 ```
-$ rustc mutate.rs && ./mutate && ./mutate && ./mutate
-*[3, 1, 2, 5, 4]
-*[1, 2, 4, 3, 5]
-*[1, 2, 4, 5, 3]
+$ rustc borrow.rs
+*borrow.rs:6:29: 6:36 error: capture of moved value: 'numbers'
+*borrow.rs:6             for j in 0..3 { numbers[j] += 1 }
+*                                       ^~~~~~~
+*borrow.rs:5:34: 7:10 note: 'numbers' moved into closure environment
+*               here because it has type '[closure(())]', which is
+*               non-copyable
+*borrow.rs:5         std::thread::scoped(move || {
+*borrow.rs:6             for j in 0..3 { numbers[j] += 1 }
+*borrow.rs:7         });
+*borrow.rs:5:34: 7:10 help: perhaps you meant to use 'clone()'?
+*borrow.rs:5         std::thread::scoped(move || {
+*borrow.rs:6             for j in 0..3 { numbers[j] += 1 }
+*borrow.rs:7         });
 ```
 
 ---
-class: middle, center
+class: center, middle
 
-## Functional
+## Icing on the cake
+
+---
+class: middle
+
+```rust
+fn main() {
+    let x = 5;
+
+    match x {
+        1 | 2       => println!("one or two"),
+        3           => println!("three"),
+        e @ 1...5   => println!("one through five, {}", e),
+        e if e < 10 => println!("less than 10, {}", e),
+        _           => println!("anything"),
+    }
+}
+
+```
 
 ---
 class: middle
@@ -944,12 +974,11 @@ class: middle
 use std::iter::iterate;
 
 fn main() {
-  let fibonacci_seq =
-      iterate( (0u64, 1u64), |e| {(e.1, e.0 + e.1)} )
+  let fibonacci = iterate((0u32, 1u32), |e| {(e.1, e.0 + e.1)})
         .skip(1)
         .map(|e| e.1);
 
-  let numbers: Vec<_> = fibonacci_seq.take(10).collect();
+  let numbers: Vec<_> = fibonacci.take(10).collect();
 
   println!("{:?}", numbers);
 }
@@ -958,9 +987,27 @@ fn main() {
 ---
 class: middle
 
-```
-$ rustc fn.rs && ./fn
-*[1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+```rust
+struct Fibonacci {
+    curr: u32,
+    next: u32,
+}
+
+impl Iterator for Fibonacci {
+    type Item = u32;
+    fn next(&mut self) -> Option<u32> {
+        let new_next = self.curr + self.next;
+
+        self.curr = self.next;
+        self.next = new_next;
+
+        Some(self.curr)
+    }
+}
+
+fn fibonacci() -> Fibonacci {
+    Fibonacci { curr: 1, next: 1 }
+}
 ```
 
 ---
