@@ -1,0 +1,3 @@
+[submodule "rust-guides"]
+	path = rust-guide
+	url = https://github.com/leonardinius/rust-guide.git
