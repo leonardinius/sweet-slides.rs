@@ -964,25 +964,29 @@ Rust
 class: middle
 
 ```rust
-struct Fibonacci {
-    curr: u32,
-    next: u32,
+extern mod active_support;
+use active_support::Period;
+
+fn main() {
+  println!("{:?}", 2.days().from_now());
+  println!("{:?}", 2.weeks().from_now());
+  println!("{:?}", 2.months().from_now());
+  println!("{:?}", 2.years().from_now());
+}
+```
+
+```rust
+pub trait Period {
+  fn days(&self) -> TimeChange;
+  fn weeks(&self) -> TimeChange;
+  ...
 }
 
-impl Iterator for Fibonacci {
-    type Item = u32;
-    fn next(&mut self) -> Option<u32> {
-        let new_next = self.curr + self.next;
-
-        self.curr = self.next;
-        self.next = new_next;
-
-        Some(self.curr)
-    }
-}
-
-fn fibonacci() -> Fibonacci {
-    Fibonacci { curr: 1, next: 1 }
+impl Period for u32 {
+  fn days(&self) -> TimeChange {
+    TimeChange::new().days(*self as f32)
+  }
+  ...
 }
 ```
 
