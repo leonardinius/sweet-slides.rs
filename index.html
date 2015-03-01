@@ -296,7 +296,7 @@ I'm in IT market for around 10 years now and during that period I used
 to wear different hats on:
 - starting from system administrator assistant
 - continuing to different development positions
-- and periodically filling some kind of Architect, 'Archi'-type
+- and occasionally filling some kind of Architect, 'Archi'-type
 positions.
 
 At the moment I'm working with GaleoConsulting and my official job
@@ -341,8 +341,7 @@ So,
   Github front page?
 - or the hottest job advertisement in Silicon Valley?
 
-No! We are _NOT_ talking about the _likeness_ and _hype_ around the
-language as popularity measure, but it's usage and spread of use.
+No! We _are_ talking about it's _usage_ and _spread of use_.
 
 ---
 class: center, middle, big-headers, h-shadow
@@ -393,10 +392,8 @@ class: h-last-highlighted
 
 ???
 
-- Necessity to manually allocate and free all resources.
-
-  **Problems:** Manual and tedious process of manual resource
-  allocation, inevitable mistakes, memory leaks and double frees.
+- **Problems:** Manual and tedious process of resource allocation,
+inevitable mistakes, memory leaks and double frees.
 
 ---
 continued: true
@@ -599,13 +596,11 @@ Because every bit and every CPU cycle matters.
 
 Usually speed and safety come in balance. You get one, you loose the
 other. You either do check array boundaries in runtime (and loose
-speed), or you do not (and loose safety). With C++ you get double
-edged sword and more freedom/options to choose from: but in the end of
-the day you always risk to cut your arm or chop your leg off.
+speed), or you do not (and loose safety).
 
 But not with Rust.
 
-Rust team takes different road:
+Rust team takes different approach:
 - Memory safety must never be compromised.
 - Abstraction should be zero-cost, while still maintaining safety.
 - Practicality is key.
@@ -613,32 +608,28 @@ Rust team takes different road:
 They found a way to enforce safety during compile time, to stay both
 safe and efficient.
 
-You don't have to compromise and can keep your limbs attached.
+You don't have to compromise. You still can have your cake and eat it
+too.
 
 ---
 
 ## Extensible
-### - Hygienic macros
 ### - Linters
+### - Hygienic macros
 ### - Plugins
 
 ???
 
-It's an advance topic and I will cover it very briefly.
-
-Rust allows you to extend syntax, define compile-time checked hygienic
-macroses (no clashes with the rest of code) et cetera.
+It's an advanced topic and I will cover it very briefly.
 
 Few samples:
-- Linters checking your code conforms to best practices
-- Macroses checking SQL queries are valid during compilation time, not
-during execution et cetera.
+- Code linters checking your code conforms to best practices
+- Hygienic (compile time checked) macroses checking SQL queries are
+  valid during compilation time, not during execution et cetera.
 - Plugins integrating your DSLs with compiler.
 
 Basically, Rust is giving you best things of Lisp / Groovy /
 Javascript and still staying low-level, system programming language.
-
-You can have your cake and eat it too.
 
 ---
 
@@ -982,7 +973,9 @@ $ rustc borrow.rs
 ---
 class: center, middle
 
-## Icing on the cake
+![chef](files/chef.png) ![icing on the cak](files/icing.png)
+
+## Sweet, sweet Rust
 
 ---
 class: middle
